@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\FlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('patients/create',[PatientsController::class, 'create']);
 Route::resource('patients',PatientsController::class);
+
+Route::get('flogs/create',[FlogsController::class, 'create']);
+Route::resource('flogs',FlogsController::class);
