@@ -31,21 +31,59 @@ class FlogsController extends Controller
 
     public function show($id)
     {
-        // Lógica para mostrar un registro específico del modelo en la vista
+        /*$flog = Flogs::find($id);
+
+        if ($flog) {
+            return view('FlogsShow', compact('flog'));
+        } else {
+            return redirect()->route('flogs.index')->with('error', 'Comida no encontrado.');
+        }*/
     }
 
     public function edit($id)
     {
-        // Lógica para mostrar el formulario de edición
+        // Aquí debes buscar el cliente por su ID, suponiendo que tienes un modelo llamado "patient"
+        $flog = Flogs::find($id);
+    
+        // Luego, puedes retornar la vista de edición junto con el cliente encontrado
+        return view('FlogsEdit', compact('flog'));
     }
 
     public function update(Request $request, $id)
     {
-        // Lógica para actualizar un registro específico en la base de datos
+        // Validación de datos
+        $this->validate($request, [
+            'type' => 'required',
+            'content' => 'required',
+            'patient_id' => 'required',
+        ]);
+
+        // Obtener el cliente a actualizar
+        $flog = Flogs::find($id);
+
+        if (!$flog) {
+            // Manejar el caso en que el cliente no se encuentra
+            return redirect()->route('flogs.index')->with('error', 'Comida no encontrado');
+        }
+
+        // Actualizar los datos del cliente
+        $flog->type = $request->input('type');
+        $flog->content = $request->input('content');
+        $flog->patient_id = $request->input('patient_id');
+
+
+        $flog->save();
+
+        return redirect()->route('flogs.index', $flog->id)->with('success', 'Comida actualizado con éxito');
     }
 
     public function destroy($id)
     {
-        // Lógica para eliminar un registro específico de la base de datos
+        $flog = Flogs::find($id);
+
+        if ($flog) {
+            $flog->delete();
+            return redirect("/flogs");
+        }
     }
 }

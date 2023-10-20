@@ -30,7 +30,9 @@ Route::get('/patients/edit/{id}',[PatientsController::class, 'edit']);
 Route::put('/patients/{id}',[PatientsController::class, 'update']);
 Route::delete('/patients/delete/{id}',[PatientsController::class, 'destroy']);
 
-
 Route::resource('/flogs',FlogsController::class);
 Route::get('/flogs/create',[FlogsController::class, 'create']);
-Route::get('/flogs/create',[FlogsController::class, 'create']);
+Route::get('/flogs/show/{id}',[FlogsController::class, 'show']);
+Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
+Route::put('/flogs/{id}',[FlogsController::class, 'update']);
+Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
