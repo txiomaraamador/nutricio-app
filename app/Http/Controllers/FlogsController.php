@@ -11,7 +11,7 @@ class FlogsController extends Controller
     public function index()
     {
         $flogs=Flogs::all();
-        return view('FlogsIndex', compact('flogs'));
+        return view('flogsindex', compact('flogs'));
     }
 
     public function create()
@@ -26,7 +26,7 @@ class FlogsController extends Controller
         $flog -> content = $request -> input('content');
         $flog -> patient_id = $request -> input('patient_id');
         $flog -> save();
-        return view('FlogsIndex');
+        return view('flogsindex');
     }
 
     public function show($id)

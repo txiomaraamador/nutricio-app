@@ -23,8 +23,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('patients/create',[PatientsController::class, 'create']);
-Route::resource('patients',PatientsController::class);
+Route::resource('/patients',PatientsController::class);
+Route::get('/patients/create',[PatientsController::class, 'create']);
+Route::get('/patients/show/{id}',[PatientsController::class, 'show']);
+Route::get('/patients/edit/{id}',[PatientsController::class, 'edit']);
+Route::put('/patients/{id}',[PatientsController::class, 'update']);
+Route::delete('/patients/delete/{id}',[PatientsController::class, 'destroy']);
 
-Route::get('flogs/create',[FlogsController::class, 'create']);
-Route::resource('flogs',FlogsController::class);
+
+Route::resource('/flogs',FlogsController::class);
+Route::get('/flogs/create',[FlogsController::class, 'create']);
+Route::get('/flogs/create',[FlogsController::class, 'create']);

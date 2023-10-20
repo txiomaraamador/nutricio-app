@@ -4,17 +4,27 @@
 
 @section('content')
 <div class="container">
-    <h2>Listado de Pacientes</h2>
-        @foreach ($patients as $patient)
-            <div class="card">
-                <h5 class="card-header">{{$patient->name}}</h5>
-                <div class="card-body">
-                    <h5 class="card-title">{{$patient->code}}</h5>
-                    <p class="card-text">{{$patient->sex}}</p>
-                    <p class="card-text">{{$patient->user_id}}</p>
+    <h1 class="display-6">Listado de Pacientes</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach ($patients as $patient)
+            <tr>
+                <td>{{$patient->code}}</td>
+                <td>{{$patient->name}}</td>
+                <td>
                     <a href="#" class="btn btn-primary">Ver historial de comidas</a>
-                </div>
-        @endforeach
-    </div>
+                    <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-primary">Ver Detalles</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection

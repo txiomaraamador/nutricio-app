@@ -11,7 +11,7 @@ class PatientsController extends Controller
     public function index()
     {
         $patients=Patients::all();
-        return view('PatientsIndex', compact('patients'));
+        return view('patientsindex', compact('patients'));
     }
 
     public function create()
@@ -27,26 +27,65 @@ class PatientsController extends Controller
         $patient -> sex = $request -> input('sex');
         $patient -> user_id = $request -> input('user_id');
         $patient -> save();
-        return view('PatientsIndex');
+        return redirect()->route('patients.index');
     }
 
     public function show($id)
     {
-        // Lógica para mostrar un registro específico del modelo en la vista
+        $patient = Patients::find($id);
+
+        if ($patient) {
+            return view('PatientsShow', compact('patient'));
+        } else {
+            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
+        }
     }
 
     public function edit($id)
     {
-        // Lógica para mostrar el formulario de edición
+        // Aquí debes buscar el cliente por su ID, suponiendo que tienes un modelo llamado "patient"
+        $patient = Patients::find($id);
+    
+        // Luego, puedes retornar la vista de edición junto con el cliente encontrado
+        return view('PatientsEdit', compact('patient'));
     }
 
     public function update(Request $request, $id)
     {
-        // Lógica para actualizar un registro específico en la base de datos
+                // Validación de datos
+                $this->validate($request, [
+                    'name' => 'required',
+                    'code' => 'required',
+                    'sex' => 'required',
+                    'user_id' => 'required',
+                ]);
+        
+                // Obtener el cliente a actualizar
+                $patient = Patients::find($id);
+        
+                if (!$patient) {
+                    // Manejar el caso en que el cliente no se encuentra
+                    return redirect()->route('patients.index')->with('error', 'Paciente no encontrado');
+                }
+        
+                // Actualizar los datos del cliente
+                $patient->name = $request->input('name');
+                $patient->code = $request->input('code');
+                $patient->sex = $request->input('sex');
+                $patient->user_id = $request->input('user_id');
+        
+                $patient->save();
+        
+                return redirect()->route('patients.show', $patient->id)->with('success', 'Paciente actualizado con éxito');
     }
 
     public function destroy($id)
     {
-        // Lógica para eliminar un registro específico de la base de datos
+        $patient = Patients::find($id);
+
+        if ($patient) {
+            $patient->delete();
+            return redirect("/patients");
+        }
     }
 }
