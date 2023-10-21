@@ -10,8 +10,9 @@ class FlogsController extends Controller
 {
     public function index()
     {
-        $flogs=Flogs::all();
+        $flogs = Flogs::with('patients')->get();
         return view('flogsindex', compact('flogs'));
+
     }
 
     public function create()
@@ -26,7 +27,7 @@ class FlogsController extends Controller
         $flog -> content = $request -> input('content');
         $flog -> patient_id = $request -> input('patient_id');
         $flog -> save();
-        return view('flogsindex');
+        return redirect()->route('flogs.index');
     }
 
     public function show($id)
@@ -82,8 +83,15 @@ class FlogsController extends Controller
         $flog = Flogs::find($id);
 
         if ($flog) {
-            $flog->delete();
-            return redirect("/flogs");
+            try {
+                $flog->delete();
+                return redirect("/flogs")->with('success', 'Comida eliminado con éxito');
+            } catch (\Illuminate\Database\QueryException $e) {
+                // Manejar la excepción de la base de datos (error de llave foránea)
+                return redirect("/flogs")->with('error', 'No se puede eliminar la comida. Está siendo utilizado en otra parte del sistema.');
+            }
+        } else {
+            return redirect("/flogs")->with('error', 'Comida no encontrado');
         }
     }
 }

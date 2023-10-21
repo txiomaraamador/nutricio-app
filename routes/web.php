@@ -16,7 +16,7 @@ use App\Http\Controllers\FlogsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Auth::routes();
@@ -36,3 +36,5 @@ Route::get('/flogs/show/{id}',[FlogsController::class, 'show']);
 Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
 Route::put('/flogs/{id}',[FlogsController::class, 'update']);
 Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
+
+Route::get('/patients/{id}/flogs', [PatientsController::class, 'showFlogs'])->name('patients.showFlogs');

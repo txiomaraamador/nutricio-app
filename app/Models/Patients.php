@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Patients extends Model
 {
     use HasFactory;
+
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 }

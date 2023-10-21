@@ -2,6 +2,7 @@
 
 @section('title', 'Flog Create')
 @section('content')
+@include('header')
 <div class="container mt-5">
     <h1 class="display-6">Editar Comida</h1>
     <hr style="color: #000000;" />
@@ -34,6 +35,7 @@
         </div>
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            <a href="/flogs" class="btn btn-primary mt-3">Volver a la lista de Comidas</a>
         </div>
     </form>
 </div>

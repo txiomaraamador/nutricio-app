@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Patient Edit')
 @section('content')
-
+@include('header')
 <div class="container mt-5">
     <h1 class="display-6">Editar Paciente</h1>
     <hr style="color: #000000;" />
@@ -41,6 +41,7 @@
         </div>
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            <a href="/patients" class="btn btn-primary mt-3">Volver a la lista de pacientes</a>
         </div>
     </form>
 </div>

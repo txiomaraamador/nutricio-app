@@ -2,6 +2,7 @@
 
 @section('title', 'Patient Create')
 @section('content')
+@include('header')
 <div class="container mt-5">
     <h1 class="display-6">Agregar Paciente</h1>
     <hr style="color: #000000;" />
@@ -22,8 +23,12 @@
             </div>
         </div>
         <div class="col-md-6">
-            <label for="sex" class="form-label">Sex:</label>
-            <input type="text" name="sex" class="form-control" required>
+            <label for="sex" class="form-label">Sexo:</label>
+            <select name="sex" class="form-select" required>
+                <option selected>Elige uno</option>
+                <option value="hombre">hombre</option>
+                <option value="mujer">mujer</option>
+            </select>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -35,9 +40,10 @@
                 Looks good!
             </div>
         </div>
-        <div class="col-12">
+        <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit">Guardar</button>
-        </div>
+            <a href="/patients" class="btn btn-primary">Cancelar</a>
+          </div>
     </form>
 </div>
 @endsection

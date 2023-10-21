@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Patients;
+use App\Models\Flogs; 
 
 class PatientsController extends Controller
 {
     public function index()
     {
-        $patients=Patients::all();
+        $patients = Patients::with('users')->get();
+
         return view('patientsindex', compact('patients'));
     }
 
@@ -84,8 +86,28 @@ class PatientsController extends Controller
         $patient = Patients::find($id);
 
         if ($patient) {
-            $patient->delete();
-            return redirect("/patients");
+            try {
+                $patient->delete();
+                return redirect("/patients")->with('success', 'Paciente eliminado con éxito');
+            } catch (\Illuminate\Database\QueryException $e) {
+                // Manejar la excepción de la base de datos (error de llave foránea)
+                return redirect("/patients")->with('error', 'No se puede eliminar el paciente. Está siendo utilizado en otra parte del sistema.');
+            }
+        } else {
+            return redirect("/patients")->with('error', 'Paciente no encontrado');
         }
+    }
+
+    public function showFlogs($id)
+    {
+        $patient = Patients::find($id);
+
+        if (!$patient) {
+            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
+        }
+
+        $flogs = Flogs::where('patient_id', $id)->get();
+
+        return view('flogspatients', compact('flogs', 'patient'));
     }
 }
