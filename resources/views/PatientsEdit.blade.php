@@ -39,10 +39,10 @@
                 Looks good!
             </div>
         </div>
-        <div class="col-12">
+        <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit">Guardar cambios</button>
             <a href="/patients" class="btn btn-primary mt-3">Volver a la lista de pacientes</a>
-        </div>
+          </div>
     </form>
 </div>
 @endsection

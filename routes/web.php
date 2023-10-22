@@ -15,13 +15,13 @@ use App\Http\Controllers\FlogsController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/inicio', function () {
     return view('inicio');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 
 Route::resource('/patients',PatientsController::class);
 Route::get('/patients/create',[PatientsController::class, 'create']);

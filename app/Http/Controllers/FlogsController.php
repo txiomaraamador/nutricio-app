@@ -22,12 +22,17 @@ class FlogsController extends Controller
 
     public function store(Request $request)
     {
-        $flog = new Flogs();
-        $flog -> type = $request -> input('type');
-        $flog -> content = $request -> input('content');
-        $flog -> patient_id = $request -> input('patient_id');
-        $flog -> save();
-        return redirect()->route('flogs.index');
+        try {
+            $flog = new Flogs();
+            $flog -> type = $request -> input('type');
+            $flog -> content = $request -> input('content');
+            $flog -> patient_id = $request -> input('patient_id');
+            $flog -> save();
+            return redirect("/flogs")->with('success', 'Paciente creado con éxito');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Manejar el error de llave foránea
+            return redirect("/flogs/create")->with('error', 'No se puede agregar la comida. El Paciene no existe.');
+        }
     }
 
     public function show($id)
