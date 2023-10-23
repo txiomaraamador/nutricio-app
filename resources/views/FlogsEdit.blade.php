@@ -14,7 +14,13 @@
 
         <div class="col-md-6">
             <label for="type" class="form-label">Tipo:</label>
-            <input type="text" name="type" class="form-control" value="{{$flog->type}}" required>
+            <select type="text" name="type" class="form-select" value="{{$flog->type}}" required>
+            <option selected>Elige uno</option>
+                <option value="Comida">Comida</option>
+                <option value="Cena">Cena</option>
+                <option value="Desayuno">Desayuno</option>
+                <option value="Colacion">Colación</option>
+            </select>
             <div class="valid-feedback">
                 Looks good!
             </div>

@@ -35,7 +35,7 @@ class PatientsController extends Controller
             return redirect("/patients")->with('success', 'Paciente creado con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-            return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
+         //   return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
         }
     }
 
