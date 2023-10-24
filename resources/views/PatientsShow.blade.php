@@ -24,7 +24,7 @@
                     <br>
                     <p class="card-text">Codigo: {{$patient->code}}</p>
                     <p class="card-text">Sexo: {{$patient->sex}}</p>
-                    <p class="card-text">Nutriologo: {{$patient->users->name}}</p>
+                    <p class="card-text">Nutriologo: {{$patient->nameuser->name}}</p>
                     <!-- Botones de editar y eliminar con formato de Bootstrap -->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 

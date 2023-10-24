@@ -4,7 +4,7 @@
 @section('content')
 @include('header')
 <div class="container mt-5">
-    <h1 class="display-6">Editar Comida</h1>
+    <h1 class="display-6">Editar Comida de {{ $flog->namepatients->name }}</h1>
     <hr style="color: #000000;" />
 
 
@@ -28,13 +28,6 @@
         <div class="col-md-6">
             <label for="content" class="form-label">Contenido:</label>
             <input type="text" name="content" class="form-control" value="{{$flog->content}}"required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label for="patient_id" class="form-label">Paciente:</label>
-            <input type="text" name="patient_id" class="form-control" value="{{$flog->patient_id}}" required>
             <div class="valid-feedback">
                 Looks good!
             </div>

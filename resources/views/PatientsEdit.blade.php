@@ -3,7 +3,7 @@
 @section('content')
 @include('header')
 <div class="container mt-5">
-    <h1 class="display-6">Editar Paciente</h1>
+    <h1 class="display-6">Editar Paciente de Nutriologo {{ $patient->nameuser->name }}</h1>
     <hr style="color: #000000;" />
 
 
@@ -28,13 +28,6 @@
         <div class="col-md-6">
             <label for="sex" class="form-label">Sex:</label>
             <input type="text" name="sex" class="form-control" value="{{$patient->sex}}" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label for="user_id" class="form-label">Nutriologo:</label>
-            <input type="text" name="user_id" class="form-control" value="{{$patient->user_id}}" required>
             <div class="valid-feedback">
                 Looks good!
             </div>

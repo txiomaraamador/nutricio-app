@@ -37,4 +37,4 @@ Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
 Route::put('/flogs/{id}',[FlogsController::class, 'update']);
 Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
 
-Route::get('/patients/{id}/flogs', [PatientsController::class, 'showFlogs'])->name('patients.showFlogs');
+Route::get('/patients/{id}/flogs', [FlogsController::class, 'showFlogs'])->name('patients.showFlogs');

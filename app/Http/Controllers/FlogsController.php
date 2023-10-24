@@ -13,7 +13,6 @@ class FlogsController extends Controller
     {
         $flogs = Flogs::with('namepatients')->get();
         return view('flogsindex', compact('flogs'));
-
     }
 
     public function create()
@@ -100,5 +99,17 @@ class FlogsController extends Controller
         } else {
             return redirect("/flogs")->with('error', 'Comida no encontrado');
         }
+    }
+    public function showFlogs($id)
+    {
+        $patient = Patients::find($id);
+
+        if (!$patient) {
+            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
+        }
+    
+        $flogs = Flogs::where('patient_id', $id)->get();
+    
+        return view('flogspatients', compact('flogs', 'patient'));
     }
 }

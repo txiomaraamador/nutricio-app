@@ -8,7 +8,7 @@
 <div class="container">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-            <h1 class="display-10">Historial de Comidas para {{ $patient->name }}</h1>
+            <h1 class="display-10">Historial de Comidas para {{ $patient->name }} </h1>
             <form class="d-flex" role="search">  
                 <a href="/patients" class="btn btn-outline-primary">Regresar</a>
             </form>
@@ -41,7 +41,6 @@
         <!-- Encabezados de la tabla -->
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Tipo</th>
                 <th>Contenido</th>
             </tr>
@@ -50,7 +49,6 @@
         <tbody class="table-group-divider">
             @foreach ($flogs as $flog)
             <tr>
-                <td>{{ $flog->id }}</td>
                 <td>{{ $flog->type }}</td>
                 <td>{{ $flog->content }}</td>
                 <td>

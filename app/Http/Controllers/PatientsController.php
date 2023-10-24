@@ -107,17 +107,4 @@ class PatientsController extends Controller
             return redirect("/patients")->with('error', 'Paciente no encontrado');
         }
     }
-
-    public function showFlogs($id)
-    {
-        $patient = Patients::find($id);
-
-        if (!$patient) {
-            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
-        }
-
-        $flogs = Flogs::where('patient_id', $id)->get();
-
-        return view('flogspatients', compact('flogs', 'patient'));
-    }
 }

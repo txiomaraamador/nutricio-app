@@ -45,7 +45,6 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Tipo</th>
                 <th>Contenido</th>
                 <th>Paciente</th>
@@ -54,10 +53,9 @@
         <tbody class="table-group-divider">
             @foreach ($flogs as $flog)
             <tr>
-                <td>{{$flog->id}}</td>
                 <td>{{$flog->type}}</td>
                 <td>{{$flog->content}}</td>
-                <td>{{$flog->Patients->name}}</td>
+                <td>{{$flog->namepatients->name}}</td>
                 <td>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
