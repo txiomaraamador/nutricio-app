@@ -11,6 +11,10 @@ class Patients extends Model
 
     public function users()
     {
+        return $this->hasMany ('App\Models\User', 'user_id');
+    }
+    public function nameuser()
+    {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

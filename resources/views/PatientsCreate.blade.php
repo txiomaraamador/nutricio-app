@@ -57,10 +57,12 @@
         </div>
         <div class="col-md-6">
             <label for="user_id" class="form-label">Nutriologo:</label>
-            <input type="text" name="user_id" class="form-control" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+            <select name="user_id" class="form-select" required>
+                <option selected>Elige un nutriologo</option>
+                @foreach($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit">Guardar</button>

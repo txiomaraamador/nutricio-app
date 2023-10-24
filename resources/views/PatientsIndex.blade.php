@@ -50,7 +50,7 @@
             <tr>
                 <td>{{$patient->code}}</td>
                 <td>{{$patient->name}}</td>
-                <td>{{$patient->users->name}}</td>
+                <td>{{$patient->nameuser->name}}</td>
                 <td>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 

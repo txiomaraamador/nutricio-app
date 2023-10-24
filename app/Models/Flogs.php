@@ -10,8 +10,13 @@ class Flogs extends Model
     use HasFactory;
 
     
-    public function patients()
+    public function namepatients()
     {
         return $this->belongsTo('App\Models\Patients', 'patient_id');
     }
+    public function patients()
+    {
+        return $this->hasMany ('App\Models\Patients', 'patient_id');
+    }
+
 }

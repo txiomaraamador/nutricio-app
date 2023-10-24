@@ -5,19 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Flogs;
+use App\Models\Patients;
 
 class FlogsController extends Controller
 {
     public function index()
     {
-        $flogs = Flogs::with('patients')->get();
+        $flogs = Flogs::with('namepatients')->get();
         return view('flogsindex', compact('flogs'));
 
     }
 
     public function create()
     {
-        return view('flogscreate');
+        $patients = Patients::all();
+        return view('flogscreate', compact('patients'));
     }
 
     public function store(Request $request)

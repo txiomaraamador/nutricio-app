@@ -6,19 +6,22 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Patients;
 use App\Models\Flogs; 
+use App\Models\User; 
 
 class PatientsController extends Controller
 {
     public function index()
     {
-        $patients = Patients::with('users')->get();
+        $patients = Patients::with('nameuser')->get();
 
         return view('patientsindex', compact('patients'));
     }
 
     public function create()
     {
-        return view('patientscreate');
+        $users = User::all(); // Obtener todos los usuarios
+
+        return view('patientscreate', compact('users'));
     }
 
     public function store(Request $request)
@@ -35,7 +38,7 @@ class PatientsController extends Controller
             return redirect("/patients")->with('success', 'Paciente creado con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-         //   return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
+            return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
         }
     }
 
