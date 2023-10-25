@@ -96,12 +96,14 @@ class PatientsController extends Controller
         $patient = Patients::find($id);
 
         if ($patient) {
+            $patient->refresh();
+            $patientName = $patient->nombre;
             try {
                 $patient->delete();
-                return redirect("/patients")->with('success', 'Paciente eliminado con éxito');
+                return redirect("/patients")->with('success', 'El paciente '.$patientName.' ha sido eliminado con éxito');
             } catch (\Illuminate\Database\QueryException $e) {
                 // Manejar la excepción de la base de datos (error de llave foránea)
-                return redirect("/patients")->with('error', 'No se puede eliminar el paciente. Está siendo utilizado en otra parte del sistema.');
+                return redirect("/patients")->with('error', 'No se puede eliminar el paciente '.$patientName.'. Está siendo utilizado en otra parte del sistema.');
             }
         } else {
             return redirect("/patients")->with('error', 'Paciente no encontrado');
