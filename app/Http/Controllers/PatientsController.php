@@ -75,7 +75,7 @@ class PatientsController extends Controller
                     'name' => 'required',
                     'code' => 'required',
                     'sex' => 'required',
-                    'user_id' => 'required',
+                    //'user_id' => 'required',
                     'lastname'=> 'required',
                     'weight'=> 'required',
                     'height'=> 'required',
@@ -95,7 +95,7 @@ class PatientsController extends Controller
                 $patient->name = $request->input('name');
                 $patient->code = $request->input('code');
                 $patient->sex = $request->input('sex');
-                $patient->user_id = $request->input('user_id');
+                //$patient->user_id = $request->input('user_id');
                 $patient->lastname = $request->input('lastname');
                 $patient->weight = $request->input('weight');
                 $patient->height = $request->input('height');

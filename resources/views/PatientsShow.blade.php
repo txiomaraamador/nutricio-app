@@ -25,9 +25,9 @@
                         <h5 class="card-title">{{ $patient->lastname }}, {{ $patient->name }}</h5>
                         <br>
                         <p class="card-text">Fecha de nacimiento: {{ $patient->date_of_birth }}</p>
-                        <p class="card-text">Edad: {{ $patient->age }}</p>
-                        <p class="card-text">Peso: {{ $patient->weight }}</p>
-                        <p class="card-text">Altura: {{ $patient->height }}</p>
+                        <p class="card-text">Edad: {{ $patient->age }} años</p>
+                        <p class="card-text">Peso: {{ $patient->weight }} kg</p>
+                        <p class="card-text">Altura: {{ $patient->height }} m</p>
                         <p class="card-text">Sexo: {{ $patient->sex }}</p>
                         <p class="card-text">Nutriologo: {{ $patient->nameuser->name }}</p>
                         <!-- Botones de editar y eliminar con formato de Bootstrap -->

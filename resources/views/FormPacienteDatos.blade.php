@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="col-md-6">
-    {!! Form::label('height', 'Altura (en cm):', ['class' => 'form-label']) !!}
+    {!! Form::label('height', 'Altura (en m):', ['class' => 'form-label']) !!}
     {!! Form::text('height', null, ['class' => 'form-control', 'required' => 'required']) !!}
     <div class="valid-feedback">
         Looks good!
@@ -42,7 +42,7 @@
 </div>
 <div class="col-md-6">
     {!! Form::label('date_of_birth', 'Fecha de nacimiento:', ['class' => 'form-label']) !!}
-    {!! Form::text('date_of_birth', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    {!! Form::date('date_of_birth', null, ['class' => 'form-control', 'required' => 'required']) !!}
     <div class="valid-feedback">
         Looks good!
     </div>

@@ -14,14 +14,14 @@
 </div>
 <div class="col-md-6">
     {!! Form::label('date', 'Fecha:', ['class' => 'form-label']) !!}
-    {!! Form::text('date', null, ['class' => 'form-control', 'id' => 'content', 'required' => 'required']) !!}
+    {!! Form::date('date', null, ['class' => 'form-control', 'id' => 'content', 'required' => 'required']) !!}
     <div class="valid-feedback">
         Looks good!
     </div>
 </div>
 <div class="col-md-6">
     {!! Form::label('hour', 'Hora:', ['class' => 'form-label']) !!}
-    {!! Form::text('hour', null, ['class' => 'form-control', 'id' => 'content', 'required' => 'required']) !!}
+    {!! Form::datetime('hour', null, ['class' => 'form-control', 'id' => 'content', 'required' => 'required']) !!}
     <div class="valid-feedback">
         Looks good!
     </div>
