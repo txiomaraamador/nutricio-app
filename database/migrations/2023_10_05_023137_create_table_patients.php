@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('code', 8);
             $table->enum('sex', ['hombre', 'mujer', 'otro']);
             $table->unsignedBigInteger('user_id');
+ 	        $table->string('lastname');
+            $table->decimal('weight',5,2);
+            $table->float('height');
+            $table->integer('age');
+            $table->date('date_of_birth');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

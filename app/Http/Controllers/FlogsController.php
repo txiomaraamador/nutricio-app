@@ -29,6 +29,8 @@ class FlogsController extends Controller
             $flog -> type = $request -> input('type');
             $flog -> content = $request -> input('content');
             $flog -> patient_id = $request -> input('patient_id');
+            $flog -> date = $request -> input('date');
+            $flog -> hour = $request -> input('hour');
             $flog -> save();
             return redirect("/flogs")->with('success', 'Paciente creado con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
@@ -64,6 +66,8 @@ class FlogsController extends Controller
             'type' => 'required',
             'content' => 'required',
             'patient_id' => 'required',
+            'date' => 'required',
+            'hour'  => 'required',
         ]);
 
         // Obtener el cliente a actualizar
@@ -78,6 +82,8 @@ class FlogsController extends Controller
         $flog->type = $request->input('type');
         $flog->content = $request->input('content');
         $flog->patient_id = $request->input('patient_id');
+        $flog -> date = $request -> input('date');
+        $flog -> hour = $request -> input('hour');
 
 
         $flog->save();

@@ -48,6 +48,8 @@
                     <th>Tipo</th>
                     <th>Contenido</th>
                     <th>Paciente</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -56,6 +58,8 @@
                         <td>{{ $flog->type }}</td>
                         <td>{{ $flog->content }}</td>
                         <td>{{ $flog->namepatients->name }}</td>
+                        <td>{{ $flog->date }}</td>
+                        <td>{{ $flog->hour }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
@@ -70,6 +74,7 @@
                                 {!! Form::close() !!}
                             </div>
                         </td>
+                        
                     </tr>
                 @endforeach
             </tbody>

@@ -30,31 +30,12 @@
 
         {!! Form::open(['url' => '/patients', 'method' => 'POST', 'class' => 'row g-3 needs-validation']) !!}
             {!! csrf_field() !!}
-            <div class="col-md-6">
-                {!! Form::label('name', 'Nombre:', ['class' => 'form-label']) !!}
-                {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                {!! Form::label('code', 'Code:', ['class' => 'form-label']) !!}
-                {!! Form::text('code', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                {!! Form::label('sex', 'Sexo:', ['class' => 'form-label']) !!}
-                {!! Form::select('sex', ['hombre' => 'Hombre', 'mujer' => 'Mujer'], null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
+            @include('FormPacienteDatos')
             <div class="col-md-6">
                 {!! Form::label('user_id', 'Nutriologo:', ['class' => 'form-label']) !!}
                 {!! Form::select('user_id', $users->pluck('name', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elige un nutriologo']) !!}
             </div>
+
             <div class="d-grid gap-2">
                 {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                 <a href="/patients" class="btn btn-primary">Cancelar</a>

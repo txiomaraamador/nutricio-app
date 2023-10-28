@@ -26,20 +26,25 @@ class PatientsController extends Controller
 
     public function store(Request $request)
     {
-        try {
+      //  try {
             // Crear un nuevo paciente
             $patient = new Patients();
             $patient->name = $request->input('name');
             $patient->code = $request->input('code');
             $patient->sex = $request->input('sex');
             $patient->user_id = $request->input('user_id');
+            $patient->lastname = $request->input('lastname');
+            $patient->weight = $request->input('weight');
+            $patient->height = $request->input('height');
+            $patient->age = $request->input('age');
+            $patient->date_of_birth = $request->input('date_of_birth');
             $patient->save();
     
             return redirect("/patients")->with('success', 'Paciente creado con éxito');
-        } catch (\Illuminate\Database\QueryException $e) {
+      //  } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-            return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
-        }
+          //  return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
+      //  }
     }
 
     public function show($id)
@@ -64,12 +69,18 @@ class PatientsController extends Controller
 
     public function update(Request $request, $id)
     {
+       // dd($request->all());
                 // Validación de datos
                 $this->validate($request, [
                     'name' => 'required',
                     'code' => 'required',
                     'sex' => 'required',
                     'user_id' => 'required',
+                    'lastname'=> 'required',
+                    'weight'=> 'required',
+                    'height'=> 'required',
+                    'age'=> 'required',
+                    'date_of_birth'=> 'required',
                 ]);
         
                 // Obtener el cliente a actualizar
@@ -85,6 +96,11 @@ class PatientsController extends Controller
                 $patient->code = $request->input('code');
                 $patient->sex = $request->input('sex');
                 $patient->user_id = $request->input('user_id');
+                $patient->lastname = $request->input('lastname');
+                $patient->weight = $request->input('weight');
+                $patient->height = $request->input('height');
+                $patient->age = $request->input('age');
+                $patient->date_of_birth = $request->input('date_of_birth');
         
                 $patient->save();
         

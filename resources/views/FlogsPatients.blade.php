@@ -9,13 +9,11 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Historial de Comidas para {{ $patient->name }} </h1>
-                {!! Form::open(['url' => '/patients', 'class' => 'd-flex', 'role' => 'search']) !!}
-                    {!! Form::button('Regresar', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
-                {!! Form::close() !!}
+                <a href="/patients" class="btn btn-outline-primary">Regresar</a>
                 <a href="{{ url('/patients/' . $patient->id . '/generate-pdf') }}" class="btn btn-outline-primary">Descargar en PDF</a>
 
             </div>
-        </nav>pg
+        </nav>
 
         @if(session('error'))
             <div id="alert" class="alert alert-danger">
@@ -46,6 +44,8 @@
                 <tr>
                     <th>Tipo</th>
                     <th>Contenido</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
                 </tr>
             </thead>
             <!-- Cuerpo de la tabla -->
@@ -54,6 +54,8 @@
                     <tr>
                         <td>{{ $flog->type }}</td>
                         <td>{{ $flog->content }}</td>
+                        <td>{{ $flog->date }}</td>
+                        <td>{{ $flog->hour }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 

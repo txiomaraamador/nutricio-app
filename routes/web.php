@@ -24,14 +24,14 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio');
 
 Route::resource('/patients',PatientsController::class);
-Route::get('/patients/create',[PatientsController::class, 'create']);
+Route::post('/patients/create',[PatientsController::class, 'create']);
 Route::get('/patients/show/{id}',[PatientsController::class, 'show']);
 Route::get('/patients/edit/{id}',[PatientsController::class, 'edit']);
-Route::put('/patients/{id}',[PatientsController::class, 'update']);
+Route::put('/patients/{id}',[PatientsController::class, 'update'])->name('patients.update');
 Route::delete('/patients/delete/{id}',[PatientsController::class, 'destroy']);
 
 Route::resource('/flogs',FlogsController::class);
-Route::get('/flogs/create',[FlogsController::class, 'create']);
+Route::post('/flogs/create',[FlogsController::class, 'create']);
 Route::get('/flogs/show/{id}',[FlogsController::class, 'show']);
 Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
 Route::put('/flogs/{id}',[FlogsController::class, 'update']);

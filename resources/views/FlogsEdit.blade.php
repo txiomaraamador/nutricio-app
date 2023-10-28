@@ -9,20 +9,7 @@
 
         {!! Form::model($flog, ['route' => ['flogs.update', $flog->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data', 'class' => 'row g-3 needs-validation']) !!}
             {!! csrf_field() !!}
-            <div class="col-md-6">
-                {!! Form::label('type', 'Tipo:', ['class' => 'form-label']) !!}
-                {!! Form::select('type', ['Comida' => 'Comida', 'Cena' => 'Cena', 'Desayuno' => 'Desayuno', 'Colacion' => 'Colación'], null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-6">
-                {!! Form::label('content', 'Contenido:', ['class' => 'form-label']) !!}
-                {!! Form::text('content', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
+            @include('FormFlogsDatos')
             <div class="d-grid gap-2">
                 {!! Form::submit('Guardar cambios', ['class' => 'btn btn-primary']) !!}
                 <a href="/flogs" class="btn btn-primary mt-3">Volver a la lista de Comidas</a>

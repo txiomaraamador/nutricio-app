@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('type', 100);
             $table->text('content');
             $table->unsignedBigInteger('patient_id');
+	        $table->date('date');
+            $table->time('hour');
             $table->timestamps();
             
             $table->foreign('patient_id')->references('id')->on('patients');
