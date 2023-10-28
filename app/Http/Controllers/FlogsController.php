@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Flogs;
 use App\Models\Patients;
+use PDF;
 
 class FlogsController extends Controller
 {
@@ -112,4 +113,15 @@ class FlogsController extends Controller
     
         return view('flogspatients', compact('flogs', 'patient'));
     }
-}
+
+    public function generatePdf($id)
+        {
+            $patient = Patients::find($id);
+            $flogs = Flogs::where('patient_id', $id)->get();
+        
+            $pdf = PDF::loadView('pdf.listadoflogspatients', compact('flogs', 'patient'));
+        
+            return $pdf->download('historial_comidas.pdf');
+        }
+    }
+

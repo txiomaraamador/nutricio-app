@@ -38,3 +38,5 @@ Route::put('/flogs/{id}',[FlogsController::class, 'update']);
 Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
 
 Route::get('/patients/{id}/flogs', [FlogsController::class, 'showFlogs'])->name('patients.showFlogs');
+
+Route::get('/patients/{id}/generate-pdf',[FlogsController::class, 'generatePdf'])->name('listado.pdf');

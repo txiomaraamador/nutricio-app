@@ -12,8 +12,10 @@
                 {!! Form::open(['url' => '/patients', 'class' => 'd-flex', 'role' => 'search']) !!}
                     {!! Form::button('Regresar', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
                 {!! Form::close() !!}
+                <a href="{{ url('/patients/' . $patient->id . '/generate-pdf') }}" class="btn btn-outline-primary">Descargar en PDF</a>
+
             </div>
-        </nav>
+        </nav>pg
 
         @if(session('error'))
             <div id="alert" class="alert alert-danger">
