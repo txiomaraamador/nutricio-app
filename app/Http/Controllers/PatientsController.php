@@ -10,11 +10,17 @@ use App\Models\User;
 
 class PatientsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patients::with('nameuser')->get();
-
-        return view('patientsindex', compact('patients'));
+        $query = $request->input('query');
+        
+        if ($query) {
+            $results = Patients::search($query)->get();
+            return view('ResultsPatients', compact('results'));
+        } else {
+            $patients = Patients::with('nameuser')->get();
+            return view('patientsindex', compact('patients'));
+        }
     }
 
     public function create()

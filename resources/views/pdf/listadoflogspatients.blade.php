@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="container">
+    <img src="images\logo.jpg" class="card-img-top">
         <div class="container-fluid">
             <h1 class="display-10">Historial de Comidas</h1>
             <h5 class="display-10">Paciente: {{ $patient->lastname }}, {{ $patient->name }} </h5>

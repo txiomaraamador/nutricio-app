@@ -11,12 +11,13 @@
                 {!! Form::open(['url' => '/patients/create', 'class' => 'd-flex', 'role' => 'search']) !!}
                     {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
                 {!! Form::close() !!}
+                <form action="{{ route('search') }}" method="GET" class="d-flex" role="search">
+                    <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
             </div>
         </nav>
-        <form action="{{ route('search') }}" method="GET">
-            <input type="text" name="query" placeholder="Buscar...">
-            <button type="submit">Buscar</button>
-        </form>
+        
 
         @if(session('error'))
             <div id="alert" class="alert alert-danger">
