@@ -13,10 +13,11 @@ class PatientsController extends Controller
     public function index(Request $request)
     {
         $query = $request->input('query');
-        
+    
         if ($query) {
             $results = Patients::search($query)->get();
-            return view('ResultsPatients', compact('results'));
+            $patients = Patients::with('nameuser')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
+            return view('patientsindex', compact('patients', 'results'));
         } else {
             $patients = Patients::with('nameuser')->get();
             return view('patientsindex', compact('patients'));

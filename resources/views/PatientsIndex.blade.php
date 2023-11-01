@@ -40,7 +40,41 @@
                 }
             }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
         </script>
+@if(isset($results) && count($results) > 0)
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Nutriologo</th>
+                    <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($results as $patient)
+                    <tr>
+                        <td>{{ $patient->code }}</td>
+                        <td>{{ $patient->name }}</td>
+                        <td>{{ $patient->nameuser->name }}</td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                {!! Form::open(['route' => ['patients.showFlogs', $patient->id], 'method' => 'GET']) !!}
+                                    {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                {!! Form::close() !!}
+                                {!! Form::open(['route' => ['patients.show', $patient->id], 'method' => 'GET']) !!}
+                                    {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <a href="{{ url('/patients') }}" class="btn btn-primary">Mostrar Todos</a>
+    </div>
 
+  @else
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -70,5 +104,6 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 @endsection
