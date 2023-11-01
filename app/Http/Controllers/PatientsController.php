@@ -125,4 +125,11 @@ class PatientsController extends Controller
             return redirect("/patients")->with('error', 'Paciente no encontrado');
         }
     }
+ /*   public function search (){
+        $query = ''; // <-- Change the query for testing.
+
+        $patients = App\Patients::search($query)->get();
+
+        return $patients;
+    }*/
 }

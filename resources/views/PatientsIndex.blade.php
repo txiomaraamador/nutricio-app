@@ -13,6 +13,10 @@
                 {!! Form::close() !!}
             </div>
         </nav>
+        <form action="{{ route('search') }}" method="GET">
+            <input type="text" name="query" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </form>
 
         @if(session('error'))
             <div id="alert" class="alert alert-danger">
