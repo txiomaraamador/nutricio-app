@@ -34,7 +34,7 @@ class PatientsController extends Controller
 
     public function store(Request $request)
     {
-      //  try {
+        try {
             // Crear un nuevo paciente
             $patient = new Patients();
             $patient->name = $request->input('name');
@@ -49,10 +49,10 @@ class PatientsController extends Controller
             $patient->save();
     
             return redirect("/patients")->with('success', 'Paciente creado con éxito');
-      //  } catch (\Illuminate\Database\QueryException $e) {
+        } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-          //  return redirect("/patients/create")->with('error', 'No se puede agregar al paciente. El Nutriologo no existe.');
-      //  }
+            return redirect("/patients/create")->with('error', 'No se puede agregar al paciente.');
+        }
     }
 
     public function show($id)
@@ -121,7 +121,7 @@ class PatientsController extends Controller
 
         if ($patient) {
             $patient->refresh();
-            $patientName = $patient->nombre;
+            $patientName = $patient->name;
             try {
                 $patient->delete();
                 return redirect("/patients")->with('success', 'El paciente '.$patientName.' ha sido eliminado con éxito');

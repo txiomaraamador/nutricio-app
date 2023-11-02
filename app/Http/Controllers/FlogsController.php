@@ -40,10 +40,10 @@ class FlogsController extends Controller
             $flog -> date = $request -> input('date');
             $flog -> hour = $request -> input('hour');
             $flog -> save();
-            return redirect("/flogs")->with('success', 'Paciente creado con éxito');
+            return redirect("/flogs")->with('success', 'Comida agregada con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-            return redirect("/flogs/create")->with('error', 'No se puede agregar la comida. El Paciene no existe.');
+            return redirect("/flogs/create")->with('error', 'No se puede agregar la comida. ');
         }
     }
 

@@ -6,8 +6,8 @@
 
     <div class="container">
         <script>
-            function confirmDelete(id) {
-                if (confirm("¿Estás seguro de que quieres eliminar este paciente?")) {
+            function confirmDelete(id, patientName) {
+                if (confirm("¿Estás seguro de que quieres eliminar al paciente " + patientName + "?"))  {
                     // Si el usuario confirma, redirigir al controlador para eliminar el paciente
                     window.location.href = '/patients/delete/' + id;
                 }
@@ -46,7 +46,7 @@
                             <!-- Botón de eliminación -->
                             {!! Form::open(['route' => ['patients.destroy', $patient->id], 'method' => 'DELETE']) !!}
                                 {!! csrf_field() !!}
-                                {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'confirmDelete('.$patient->id.')']) !!}
+                                {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'confirmDelete(' . $patient->id . ', "' . $patient->name . '")']) !!}
                             {!! Form::close() !!}
                         </div>
                     </div>
