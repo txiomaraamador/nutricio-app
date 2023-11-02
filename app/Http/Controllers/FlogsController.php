@@ -10,10 +10,18 @@ use PDF;
 
 class FlogsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $flogs = Flogs::with('namepatients')->get();
-        return view('flogsindex', compact('flogs'));
+        $query = $request->input('query');
+        if ($query) {
+
+            $results = Flogs::search($query)->get();
+            $flogs = Flogs::with('namepatients')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
+            return view('flogsindex', compact('flogs', 'results'));
+        } else {
+            $flogs = Flogs::with('namepatients')->get();
+            return view('flogsindex', compact('flogs'));    
+        }
     }
 
     public function create()

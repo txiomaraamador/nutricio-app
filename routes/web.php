@@ -43,3 +43,4 @@ Route::get('/patients/{id}/generate-pdf',[FlogsController::class, 'generatePdf']
 
 //use App\Http\Controllers\SearchController;
 Route::get('/search', [PatientsController::class, 'index'])->name('search');
+Route::get('/searchflog', [FlogsController::class, 'index'])->name('searchflog');
