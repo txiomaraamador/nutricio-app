@@ -8,15 +8,16 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Listado de Pacientes</h1>
-                {!! Form::open(['url' => '/patients/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                    {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
-                {!! Form::close() !!}
-                <a href="{{route('listadopatients.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
-                <form action="{{ route('search') }}" method="GET" class="d-flex" role="search">
-                    <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    {!! Form::open(['url' => '/patients/create', 'class' => 'd-flex', 'role' => 'search']) !!}
+                        {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
+                    {!! Form::close() !!}
+                    <a href="{{route('listadopatients.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
+                    <form action="{{ route('search') }}" method="GET" class="d-flex" role="search">
+                        <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
             </div>
         </nav>
         

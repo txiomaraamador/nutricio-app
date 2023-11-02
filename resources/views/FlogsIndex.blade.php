@@ -8,15 +8,17 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Listado de Comidas</h1>
-                {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                    {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
-                {!! Form::close() !!}
-                <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
+                        {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
+                    {!! Form::close() !!}
+                    <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
 
-                <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
-                    <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
+                    <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
+                        <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
             </div>
         </nav>
         <script>

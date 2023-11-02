@@ -9,9 +9,10 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Historial de Comidas para {{ $patient->name }} </h1>
-                <a href="/patients" class="btn btn-outline-primary">Regresar</a>
-                <a href="{{ url('/patients/' . $patient->id . '/generate-pdf') }}" class="btn btn-outline-primary">Descargar en PDF</a>
-
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="/patients" class="btn btn-outline-primary">Regresar</a>
+                    <a href="{{ url('/patients/' . $patient->id . '/generate-pdf') }}" class="btn btn-outline-primary">Descargar en PDF</a>
+                </div>
             </div>
         </nav>
 

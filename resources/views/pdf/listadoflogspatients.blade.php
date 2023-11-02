@@ -2,9 +2,9 @@
 @section('content')
 
 <div class="container">
-    <img src="images\logo.jpg" class="card-img-top">
+    <img src="images\logo2.jpg" style="height: 100px; width: 100px;">
         <div class="container-fluid">
-            <h1 class="display-10">Historial de Comidas</h1>
+            <h3 class="display-10">Historial de Comidas para:</h3>
             <h5 class="display-10">Paciente: {{ $patient->lastname }}, {{ $patient->name }} </h5>
             <h5 class="display-10">Edad: {{ $patient->age }} </h5>
             <h5 class="display-10">Sexo: {{ $patient->sex }} </h5>

@@ -13,7 +13,12 @@
                 }
             }
         </script>
-        <h1 class="display-6">Detalles de Paciente</h1>
+        <nav class="navbar bg-body-tertiary">
+            <h1 class="display-6">Detalles de Paciente</h1>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/patients" class="btn btn-primary mt-3">Regresar</a>
+            </div>
+        </nav>
         <hr style="color: #000000;" />
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -49,7 +54,7 @@
                         {{ $patient->id }}: {{ $patient->code }}
                     </div>
                 </div>
-                <a href="/patients" class="btn btn-primary mt-3">Regresar</a>
+                
             </div>
         </div>
         <script>
