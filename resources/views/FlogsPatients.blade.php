@@ -3,15 +3,15 @@
 @section('title', 'Historial de Comidas')
 
 @section('content')
-    @include('header')
+
 
     <div class="container">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Historial de Comidas para {{ $patient->name }} </h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a href="/patients" class="btn btn-outline-primary">Regresar</a>
-                    <a href="{{ url('/patients/' . $patient->id . '/generate-pdf') }}" class="btn btn-outline-primary">Descargar en PDF</a>
+                    <a href="/patients" class="btn btn-outline-success">Regresar</a>
+                    <a href="{{ url('/patients/' . $patient->id . '/generate-pdf') }}" class="btn btn-outline-success">Descargar en PDF</a>
                 </div>
             </div>
         </nav>
@@ -62,7 +62,7 @@
 
                                 <!-- Botón para editar el cliente -->
                                 {!! Form::open(['route' => ['flogs.edit', $flog->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
 
                                 <!-- Botón de eliminación -->

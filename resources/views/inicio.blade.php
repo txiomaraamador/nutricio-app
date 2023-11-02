@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'inicio')
 @section('content')
-@include('header')
+
 
 <div class="container my-5">
   <nav class="navbar bg-body-tertiary">
@@ -20,16 +20,16 @@
                 </div>
       </div>
             </div>
-              <div class="card text-bg-primary mb-3 mx-md-2" style="max-width: 18rem;">
+              <div class="card text-bg-success mx-md-2" style="max-width: 18rem;">
                 <div class="card-header">Bienvenido a NUTRICIO</div>
                 <div class="card-body">
                   <p class="card-title">Registra las comidas para llevar un control detallado de la dieta y de tus pacientes para alcanzar sus objetivos de salud y bienestar.</p>
                 </div>
                 
             </div>
-    <div class="card border-primary mb-3" style="max-width: 16rem;">
+    <div class="card border-success mb-3" style="max-width: 16rem;">
       <div class="card-header">Redes sociales</div>
-      <div class="card-body text-primary">
+      <div class="card-body text-success">
         <h5 class="card-title">Facebook: Nutricio<br>Instagram: nutricio_12<br>Correo: nutricio@gmail.com<br></h5>
         <p class="card-text">Siguenos.</p>
       </div>
@@ -43,7 +43,7 @@
           <h3 class="card-title">Pacientes</h3>
           <p class="card-text">Como su nutricionista personal, estoy aquí para brindarle orientación experta, apoyo comprensivo y conocimientos especializados para ayudarlo a alcanzar sus metas de salud y bienestar.</p>
           {!! Form::open(['url' => '/patients/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                        {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
+                        {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
         </div>
       </div>
@@ -54,7 +54,7 @@
           <h3 class="card-title">Comidas</h3>
           <p class="card-text">Mantengo un Registro Detallado de tu Dieta para una Vida Más Saludable. Haz que tus Comidas Cuenten: Registra tus Elecciones Alimenticias para un Futuro Más Saludable</p>
           {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                        {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
+                        {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
         </div>
       </div>

@@ -2,7 +2,6 @@
 
 @section('title', 'Patient Create')
 @section('content')
-    @include('header')
     <div class="container mt-5">
         <h1 class="display-6">Agregar Paciente</h1>
         <hr style="color: #000000;" />
@@ -37,8 +36,8 @@
             </div>
 
             <div class="d-grid gap-2">
-                {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                <a href="/patients" class="btn btn-primary">Cancelar</a>
+                {!! Form::submit('Guardar', ['class' => 'btn btn-success']) !!}
+                <a href="/patients" class="btn btn-success">Cancelar</a>
             </div>
         {!! Form::close() !!}
     </div>

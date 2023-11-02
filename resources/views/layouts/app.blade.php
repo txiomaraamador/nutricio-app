@@ -19,6 +19,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="images/logo2.jpg" class="img-fluid rounded-start" style="height: 25px; width: 30px;">
@@ -33,11 +34,26 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
+                    @auth
+                            <!-- Centered Links -->
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-3">
+                <a class="nav-link custom-link" href="/inicio">Home</a>
+            </li>
+            <li class="nav-item mx-3">
+                <a class="nav-link custom-link" href="/patients">Pacientes</a>
+            </li>
+            <li class="nav-item mx-3">
+                <a class="nav-link custom-link" href="/flogs">Comidas</a>
+            </li>
+        </ul>
+        @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -49,7 +65,12 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else 
+                          <style>
+                            .custom-link {
+                            color: #007b00;
+                          }
+                          </style>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

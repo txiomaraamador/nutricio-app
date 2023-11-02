@@ -3,20 +3,20 @@
 @section('title', 'Patients Index')
 
 @section('content')
-    @include('header')
+
     <div class="container">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Listado de Comidas</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                        {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
+                        {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
-                    <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
+                    <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-success">Descargar PDF</a>
 
                     <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
                         <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <button class="btn btn-outline-warning" type="submit">Buscar</button>
                     </form>
                 </div>
             </div>
@@ -74,7 +74,7 @@
 
                         <!-- Botón para editar el cliente -->
                         {!! Form::open(['route' => ['flogs.edit', $flog->id], 'method' => 'GET']) !!}
-                            {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                            {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                         {!! Form::close() !!}
 
                         <!-- Botón de eliminación -->
@@ -114,7 +114,7 @@
 
                                 <!-- Botón para editar el cliente -->
                                 {!! Form::open(['route' => ['flogs.edit', $flog->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
 
                                 <!-- Botón de eliminación -->

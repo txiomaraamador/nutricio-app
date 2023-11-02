@@ -3,19 +3,19 @@
 @section('title', 'Patients Index')
 
 @section('content')
-    @include('header')
+
     <div class="container">
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <h1 class="display-10">Listado de Pacientes</h1>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     {!! Form::open(['url' => '/patients/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                        {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
+                        {!! Form::button('Agregar paciente', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
-                    <a href="{{route('listadopatients.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
+                    <a href="{{route('listadopatients.pdf')}}" class="btn btn-outline-success">Descargar PDF</a>
                     <form action="{{ route('search') }}" method="GET" class="d-flex" role="search">
                         <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <button class="btn btn-outline-warning" type="submit">Buscar</button>
                     </form>
                 </div>
             </div>
@@ -62,10 +62,10 @@
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 {!! Form::open(['route' => ['patients.showFlogs', $patient->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                                 {!! Form::open(['route' => ['patients.show', $patient->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                             </div>
                         </td>
@@ -74,7 +74,7 @@
         </tbody>
     </table>
     <div class="text-center mt-4">
-        <a href="{{ url('/patients') }}" class="btn btn-primary">Mostrar Todos</a>
+        <a href="{{ url('/patients') }}" class="btn btn-success">Mostrar Todos</a>
     </div>
 
   @else
@@ -96,10 +96,10 @@
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 {!! Form::open(['route' => ['patients.showFlogs', $patient->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                                 {!! Form::open(['route' => ['patients.show', $patient->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                             </div>
                         </td>

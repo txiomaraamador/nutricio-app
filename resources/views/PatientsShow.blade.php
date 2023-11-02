@@ -3,7 +3,7 @@
 @section('title', 'Patient Show')
 
 @section('content')
-    @include('header')
+
     <div class="container">
         <script>
             function confirmDelete(id) {
@@ -16,7 +16,7 @@
         <nav class="navbar bg-body-tertiary">
             <h1 class="display-6">Detalles de Paciente</h1>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="/patients" class="btn btn-primary mt-3">Regresar</a>
+                <a href="/patients" class="btn btn-outline-success mt-3">Regresar</a>
             </div>
         </nav>
         <hr style="color: #000000;" />
@@ -24,10 +24,10 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        Paciente
+                        <h5 class="card-title">{{ $patient->lastname }}, {{ $patient->name }}</h5>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $patient->lastname }}, {{ $patient->name }}</h5>
+                        
                         <br>
                         <p class="card-text">Fecha de nacimiento: {{ $patient->date_of_birth }}</p>
                         <p class="card-text">Edad: {{ $patient->age }} años</p>
