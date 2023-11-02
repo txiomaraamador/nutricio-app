@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Patients;
 use App\Models\Flogs; 
 use App\Models\User; 
+use PDF;
 
 class PatientsController extends Controller
 {
@@ -132,11 +133,13 @@ class PatientsController extends Controller
             return redirect("/patients")->with('error', 'Paciente no encontrado');
         }
     }
- /*   public function search (){
-        $query = ''; // <-- Change the query for testing.
-
-        $patients = App\Patients::search($query)->get();
-
-        return $patients;
-    }*/
+    public function Pdf()
+    {
+        $patients = Patients::with('nameuser')->get();
+        
+        $pdf = PDF::loadView('pdf.listadopatients', compact('patients'));
+        
+        return $pdf->download('lista_de_pacientes.pdf');
+    }
 }
+

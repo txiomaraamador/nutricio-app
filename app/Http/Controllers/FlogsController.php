@@ -137,5 +137,14 @@ class FlogsController extends Controller
         
             return $pdf->download('historial_comidas.pdf');
         }
+
+    public function Pdf()
+        {
+            $flogs = Flogs::with('namepatients')->get();
+        
+            $pdf = PDF::loadView('pdf.listadoflogs', compact('flogs'));
+        
+            return $pdf->download('listado_todas_las_comidas.pdf');
+        }
     }
 

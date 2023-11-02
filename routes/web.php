@@ -29,6 +29,11 @@ Route::get('/patients/show/{id}',[PatientsController::class, 'show']);
 Route::get('/patients/edit/{id}',[PatientsController::class, 'edit']);
 Route::put('/patients/{id}',[PatientsController::class, 'update']);
 Route::delete('/patients/delete/{id}',[PatientsController::class, 'destroy']);
+//ruta de busqueda
+Route::get('/search', [PatientsController::class, 'index'])->name('search');
+//ruta de pdf
+Route::get('patientspdf',[PatientsController::class, 'Pdf'])->name('listadopatients.pdf');
+
 
 Route::resource('/flogs',FlogsController::class);
 Route::post('/flogs/create',[FlogsController::class, 'create']);
@@ -36,11 +41,11 @@ Route::get('/flogs/show/{id}',[FlogsController::class, 'show']);
 Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
 Route::put('/flogs/{id}',[FlogsController::class, 'update']);
 Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
-
+//ruta de historial de flogs para cada paciente
 Route::get('/patients/{id}/flogs', [FlogsController::class, 'showFlogs'])->name('patients.showFlogs');
-
+//ruta de pdf del historial de cada paciente
 Route::get('/patients/{id}/generate-pdf',[FlogsController::class, 'generatePdf'])->name('listado.pdf');
-
-//use App\Http\Controllers\SearchController;
-Route::get('/search', [PatientsController::class, 'index'])->name('search');
+//ruta de busqueda de flogs
 Route::get('/searchflog', [FlogsController::class, 'index'])->name('searchflog');
+
+Route::get('flogspdf',[FlogsController::class, 'Pdf'])->name('listadoflogs.pdf');

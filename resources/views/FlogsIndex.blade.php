@@ -11,6 +11,8 @@
                 {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
                     {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-primary']) !!}
                 {!! Form::close() !!}
+                <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-primary">Descargar PDF</a>
+
                 <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
                     <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
