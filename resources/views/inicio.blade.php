@@ -56,6 +56,7 @@
           {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
                         {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
                     {!! Form::close() !!}
+                    <!-- Código de instalación Cliengo para xiomaralizethamadoraguilera@gmail.com --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65440c5a14ee5c0032c5059c/65440c5d14ee5c0032c5059f.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
         </div>
       </div>
     </div>

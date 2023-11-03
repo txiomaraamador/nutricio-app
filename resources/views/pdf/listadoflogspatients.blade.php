@@ -1,8 +1,9 @@
+
 @extends('layouts.pdfinicio')
 @section('content')
 
 <div class="container">
-    <img src="images\logo2.jpg" style="height: 100px; width: 100px;">
+    <img src="images\logo3.jpg" style="height: 100px; width: 130px;">
         <div class="container-fluid">
             <h3 class="display-10">Historial de Comidas para:</h3>
             <h5 class="display-10">Paciente: {{ $patient->lastname }}, {{ $patient->name }} </h5>
