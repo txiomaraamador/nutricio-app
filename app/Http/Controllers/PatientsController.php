@@ -35,6 +35,19 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
         try {
+
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'code' => 'required|string|max:8',
+                'sex' => 'required|in:mujer,hombre', 
+                'user_id' => 'required|exists:users,id', // Verifica que el 'user_id' exista en la tabla de usuarios
+                'lastname' => 'required|string|max:255',
+                'weight' => 'required|numeric|min:0',
+                'height' => 'required|numeric|min:0',
+                'age' => 'required|integer|min:0',
+                'date_of_birth' => 'required|date',
+            ]);
+
             // Crear un nuevo paciente
             $patient = new Patients();
             $patient->name = $request->input('name');
@@ -46,6 +59,7 @@ class PatientsController extends Controller
             $patient->height = $request->input('height');
             $patient->age = $request->input('age');
             $patient->date_of_birth = $request->input('date_of_birth');
+
             $patient->save();
     
             return redirect("/patients")->with('success', 'Paciente creado con éxito');
@@ -80,15 +94,15 @@ class PatientsController extends Controller
        // dd($request->all());
                 // Validación de datos
                 $this->validate($request, [
-                    'name' => 'required',
-                    'code' => 'required',
-                    'sex' => 'required',
-                    //'user_id' => 'required',
-                    'lastname'=> 'required',
-                    'weight'=> 'required',
-                    'height'=> 'required',
-                    'age'=> 'required',
-                    'date_of_birth'=> 'required',
+                    'name' => 'required|string|max:255',
+                    'code' => 'required|string|max:20',
+                    'sex' => 'required|in:mujer,hombre', 
+                    //'user_id' => 'required|exists:users,id', // Verifica que el 'user_id' exista en la tabla de usuarios
+                    'lastname' => 'required|string|max:255',
+                    'weight' => 'required|numeric|min:0',
+                    'height' => 'required|numeric|min:0',
+                    'age' => 'required|integer|min:0',
+                    'date_of_birth' => 'required|date',
                 ]);
         
                 // Obtener el cliente a actualizar
