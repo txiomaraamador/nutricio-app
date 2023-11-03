@@ -33,6 +33,14 @@ class FlogsController extends Controller
     public function store(Request $request)
     {
         try {
+            $this->validate($request, [
+                'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
+                'content' => 'required|string|max:255',
+                'patient_id' => 'required|exists:patients,id',
+                'date' => 'required|date',
+                'hour' => 'required|date_format:H:i',
+            ]);
+
             $flog = new Flogs();
             $flog -> type = $request -> input('type');
             $flog -> content = $request -> input('content');
@@ -71,11 +79,11 @@ class FlogsController extends Controller
     {
         // Validación de datos
         $this->validate($request, [
-            'type' => 'required',
-            'content' => 'required',
-           // 'patient_id' => 'required',
-            'date' => 'required',
-            'hour'  => 'required',
+            'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
+                'content' => 'required|string|max:255',
+                //'patient_id' => 'required|exists:patients,id',
+                'date' => 'required|date',
+                'hour' => 'required|date_format:H:i',
         ]);
 
         // Obtener el cliente a actualizar
