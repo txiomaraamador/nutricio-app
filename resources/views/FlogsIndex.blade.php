@@ -24,10 +24,14 @@
         <script>
             function confirmDelete(id) {
                 if (confirm("¿Estás seguro de que quieres eliminar esta comida?")) {
-                    // Si el usuario confirma, redirigir al controlador para eliminar el paciente
+                    // Si el usuario confirma, redirigir al controlador para eliminar el registro
                     window.location.href = '/flogs/delete/' + id;
+                } else {
+                    // Si el usuario cancela, no hacer nada
+                    return false;
                 }
             }
+
         </script>
         @if(session('error'))
             <div id="alert" class="alert alert-danger">
@@ -79,7 +83,8 @@
 
                         <!-- Botón de eliminación -->
                         {!! Form::open(['route' => ['flogs.destroy', $flog->id], 'method' => 'DELETE']) !!}
-                            {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'confirmDelete('.$flog->id.')']) !!}
+                        {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'return confirmDelete('.$flog->id.')']) !!}
+
                         {!! Form::close() !!}
                     </div>
                 </td> 
@@ -88,7 +93,7 @@
     </tbody>
 </table>
 <div class="text-center mt-4">
-    <a href="{{ url('/flogs') }}" class="btn btn-primary">Mostrar Todos</a>
+    <a href="{{ url('/flogs') }}" class="btn btn-success">Mostrar Todos</a>
 </div>
 @else
         <table class="table table-hover">
@@ -119,9 +124,10 @@
 
                                 <!-- Botón de eliminación -->
                                 {!! Form::open(['route' => ['flogs.destroy', $flog->id], 'method' => 'DELETE']) !!}
-                                    {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'confirmDelete('.$flog->id.')']) !!}
+                                {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'return confirmDelete('.$flog->id.')']) !!}
+
                                 {!! Form::close() !!}
-                                <!-- Código de instalación Cliengo para xiomaralizethamadoraguilera@gmail.com --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65440c5a14ee5c0032c5059c/65440c5d14ee5c0032c5059f.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
+                               <!-- Código de instalación Cliengo para xiomaralizethamadoraguilera@gmail.com --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65440c5a14ee5c0032c5059c/65440c5d14ee5c0032c5059f.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
                             </div>
                         </td>                        
                     </tr>

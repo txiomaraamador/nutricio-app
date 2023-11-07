@@ -49,6 +49,7 @@
             <tr>
                 <th>Código</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Nutriologo</th>
                     <th></th>
             </tr>
@@ -58,6 +59,7 @@
                     <tr>
                         <td>{{ $patient->code }}</td>
                         <td>{{ $patient->name }}</td>
+                        <td>{{ $patient->lastname }}</td>
                         <td>{{ $patient->nameuser->name }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -83,6 +85,7 @@
                 <tr>
                     <th>Código</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Nutriologo</th>
                     <th></th>
                 </tr>
@@ -92,6 +95,7 @@
                     <tr>
                         <td>{{ $patient->code }}</td>
                         <td>{{ $patient->name }}</td>
+                        <td>{{ $patient->lastname }}</td>
                         <td>{{ $patient->nameuser->name }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -102,6 +106,7 @@
                                     {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                             </div>
+                            <!-- Código de instalación Cliengo para xiomaralizethamadoraguilera@gmail.com --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65440c5a14ee5c0032c5059c/65440c5d14ee5c0032c5059f.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
                         </td>
                     </tr>
                 @endforeach
