@@ -22,7 +22,7 @@
 <body>
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/inicio">
                 <img src="{{ asset('images/logo2.jpg') }}" class="img-fluid rounded-start" style="height: 25px; width: 30px;">
                 {{ config('app.name', 'Nutricio') }}
             </a>
@@ -37,11 +37,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <hr style="color: #000000;" />
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Inicio</h5>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/inicio">Home</a>
-                        </li>
+                        <h5><a class="nav-link active" aria-current="page" href="/inicio">Pagina principal</a></h5>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Pacientes
@@ -96,7 +92,7 @@
                         @endguest
                     </ul>
                     <hr style="color: #000000;" />
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Busca un paciente</h5><br>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Buscar un paciente</h5><br>
                     <form action="{{ route('search') }}" method="GET" class="d-flex" role="search">
                         <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
                         <button class="btn btn-outline-warning" type="submit">Buscar</button>

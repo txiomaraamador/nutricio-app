@@ -17,7 +17,15 @@ class FlogsController extends Controller
 
             $results = Flogs::search($query)->get();
             $flogs = Flogs::with('namepatients')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
-            return view('flogsindex', compact('flogs', 'results'));
+            
+            if ($results->isEmpty()) {
+                // Si no hay resultados, redirige de nuevo a la vista con un mensaje de error
+                return redirect()->route('flogs.index')->with('error', 'No se encontraron resultados para la búsqueda: ' . $query);
+            } else {
+                // Si hay resultados, muestra la vista con los resultados de búsqueda
+                return view('flogsindex', compact('flogs', 'results'));
+            }
+            
         } else {
             $flogs = Flogs::with('namepatients')->get();
             return view('flogsindex', compact('flogs'));    

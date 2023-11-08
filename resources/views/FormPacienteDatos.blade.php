@@ -52,7 +52,7 @@
     @error('sex')
     <div class="invalid-feedback" style="color: red;">
         {{ $message }}
-    </div>
+    </div>  
     @enderror
     <div class="valid-feedback">
         Looks good!

@@ -5,22 +5,7 @@
 @section('content')
 
     <div class="container">
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <h1 class="display-10">Listado de Comidas</h1>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
-                        {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
-                    {!! Form::close() !!}
-                    <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-success">Descargar PDF</a>
-
-                    <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
-                        <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
-                        <button class="btn btn-outline-warning" type="submit">Buscar</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+        
         <script>
             function confirmDelete(id) {
                 if (confirm("¿Estás seguro de que quieres eliminar esta comida?")) {
@@ -33,18 +18,6 @@
             }
 
         </script>
-        @if(session('error'))
-            <div id="alert" class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        @if(session('success'))
-            <div id="alert" class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <script>
             // Código JavaScript para ocultar la alerta después de unos segundos
             setTimeout(function(){
@@ -55,6 +28,31 @@
             }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
         </script>
 @if(isset($results) && count($results) > 0)
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <h1 class="display-10">Listado de Comidas</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
+                {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
+            {!! Form::close() !!}
+            <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
+                <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+                <button class="btn btn-outline-warning" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+</nav>
+@if(session('error'))
+<div id="alert" class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
+@if(session('success'))
+<div id="alert" class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 <table class="table table-hover">
     <thead>
         <tr>
@@ -96,6 +94,33 @@
     <a href="{{ url('/flogs') }}" class="btn btn-success">Mostrar Todos</a>
 </div>
 @else
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <h1 class="display-10">Listado de Comidas</h1>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
+                {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
+            {!! Form::close() !!}
+            <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-success">Descargar PDF</a>
+
+            <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
+                <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+                <button class="btn btn-outline-warning" type="submit">Buscar</button>
+            </form>
+        </div>
+    </div>
+</nav>
+@if(session('error'))
+<div id="alert" class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
+
+@if(session('success'))
+<div id="alert" class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
         <table class="table table-hover">
             <thead>
                 <tr>

@@ -18,7 +18,14 @@ class PatientsController extends Controller
         if ($query) {
             $results = Patients::search($query)->get();
             $patients = Patients::with('nameuser')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
-            return view('patientsindex', compact('patients', 'results'));
+            
+            if ($results->isEmpty()) {
+                // Si no hay resultados, redirige de nuevo a la vista con un mensaje de error
+                return redirect()->route('patients.index')->with('error', 'No se encontraron resultados para la búsqueda: ' . $query);
+            } else {
+                // Si hay resultados, muestra la vista con los resultados de búsqueda
+                return view('patientsindex', compact('patients', 'results'));
+            }
         } else {
             $patients = Patients::with('nameuser')->get();
             return view('patientsindex', compact('patients'));
@@ -35,7 +42,6 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
         try {
-
             $this->validate($request, [
                 'name' => 'required|string|max:255',
                 'code' => 'required|string|max:8',
