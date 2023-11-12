@@ -41,13 +41,26 @@ class FlogsController extends Controller
     public function store(Request $request)
     {
         try {
+            $messages = [
+                'type.required' => 'El tipo de comida es obligatorio.',
+                'type.in' => 'El tipo de comida debe ser "Comida", "Cena", "Desayuno" o "Colacion".',
+                'content.required' => 'El contenido de la comida es obligatorio.',
+                'content.string' => 'El contenido de la comida debe ser una cadena de texto.',
+                'content.max' => 'El contenido de la comida no debe tener más de :max caracteres.',
+                'patient_id.required' => 'El ID del paciente es obligatorio.',
+                'patient_id.exists' => 'El paciente seleccionado no existe.',
+                'date.required' => 'La fecha es obligatoria.',
+                'date.date' => 'La fecha debe ser una fecha válida.',
+                'hour.required' => 'La hora es obligatoria.',
+                'hour.date_format' => 'La hora debe tener el formato H:M.',
+            ];
             $this->validate($request, [
                 'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
                 'content' => 'required|string|max:255',
                 'patient_id' => 'required|exists:patients,id',
                 'date' => 'required|date',
                 'hour' => 'required|date_format:H:i',
-            ]);
+            ],$messages);
 
             $flog = new Flogs();
             $flog -> type = $request -> input('type');

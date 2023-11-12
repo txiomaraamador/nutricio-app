@@ -22,11 +22,11 @@
                                         <span class="h1 fw-bold mb-0">NUTRICIO</span>
                                     </div>
 
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Ingrese a su cuenta</h5>
 
                                     <div class="form-outline mb-4">
                                         <input type="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-                                        <label class="form-label" for="email">Email address</label>
+                                        <label class="form-label" for="email">Correo electronico</label>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
 
                                     <div class="form-outline mb-4">
                                         <input type="password" id="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
-                                        <label class="form-label" for="password">Password</label>
+                                        <label class="form-label" for="password">Contraseña</label>
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -45,16 +45,15 @@
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-success btn-lg btn-block"  type="submit">Login</button>
+                                        <button class="btn btn-success btn-lg btn-block"  type="submit">Inisiar sesion</button>
                                     </div>
 
                                     @if (Route::has('password.request'))
-                                    <a class="small text-muted" href="{{ route('password.request') }}">Forgot password?</a>
+                                    <a class="small text-muted" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                                     @endif
 
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{{ route('register') }}" style="color: #393f81;">Register here</a></p>
-                                    <a href="#!" class="small text-muted">Terms of use.</a>
-                                    <a href="#!" class="small text-muted">Privacy policy</a>
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">¿No tienes una cuenta? <a href="{{ route('register') }}" style="color: #393f81;">Registrate aquí</a></p>
+                                    
                                 </form>
 
                             </div>

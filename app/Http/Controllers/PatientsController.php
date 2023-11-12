@@ -42,6 +42,29 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
         try {
+            $messages = [
+                'name.required' => 'El nombre es obligatorio.',
+                'name.max' => 'El nombre no debe tener más de :max caracteres.',
+                'code.required' => 'El código es obligatorio.',
+                'code.max' => 'El código no debe tener más de :max caracteres.',
+                'sex.required' => 'El sexo es obligatorio.',
+                'sex.in' => 'El sexo debe ser "mujer" o "hombre".',
+                'user_id.required' => 'El usuario es obligatorio.',
+                'user_id.exists' => 'El usuario seleccionado no existe.',
+                'lastname.required' => 'El apellido es obligatorio.',
+                'lastname.max' => 'El apellido no debe tener más de :max caracteres.',
+                'weight.required' => 'El peso es obligatorio.',
+                'weight.numeric' => 'El peso debe ser un valor numérico.',
+                'weight.min' => 'El peso no debe ser menor que :min.',
+                'height.required' => 'La altura es obligatoria.',
+                'height.numeric' => 'La altura debe ser un valor numérico.',
+                'height.min' => 'La altura no debe ser menor que :min.',
+                'age.required' => 'La edad es obligatoria.',
+                'age.integer' => 'La edad debe ser un valor entero.',
+                'age.min' => 'La edad no debe ser menor que :min.',
+                'date_of_birth.required' => 'La fecha de nacimiento es obligatoria.',
+                'date_of_birth.date' => 'La fecha de nacimiento debe ser una fecha válida.',
+            ];
             $this->validate($request, [
                 'name' => 'required|string|max:255',
                 'code' => 'required|string|max:8',
@@ -52,7 +75,7 @@ class PatientsController extends Controller
                 'height' => 'required|numeric|min:0',
                 'age' => 'required|integer|min:0',
                 'date_of_birth' => 'required|date',
-            ]);
+            ], $messages);
 
             // Crear un nuevo paciente
             $patient = new Patients();

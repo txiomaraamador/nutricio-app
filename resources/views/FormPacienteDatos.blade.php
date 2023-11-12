@@ -1,15 +1,22 @@
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+</script>
 <div class="col-md-6">
     {!! Form::label('name', 'Nombre:', ['class' => 'form-label']) !!}
-    {!! Form::text('name', null, ['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' : ''), 'required' => 'required']) !!}
-    @error('name')
-        <div class="invalid-feedback" style="color: red;">
-            {{ $message }}
-        </div>
-    @enderror
-    <div class="valid-feedback">
-        Looks good!
+        {!! Form::text('name', null, ['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' : ''), 'required' => 'required']) !!}
+        @error('name')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+        @enderror
+        <div class="valid-feedback">
+            Looks good!
     </div>
 </div>
+
 <div class="col-md-6">
     {!! Form::label('lastname', 'Apellido:', ['class' => 'form-label']) !!}
     {!! Form::text('lastname', null, ['class' => 'form-control'. ($errors->has('lastname') ? ' is-invalid' : ''), 'required' => 'required']) !!}
@@ -23,27 +30,37 @@
     </div>
 </div>
 <div class="col-md-6">
-    {!! Form::label('weight', 'Peso (en kg):', ['class' => 'form-label']) !!}
-    {!! Form::text('weight', null, ['class' => 'form-control'. ($errors->has('weight') ? ' is-invalid' : ''), 'required' => 'required']) !!}
-    @error('weight')
-    <div class="invalid-feedback" style="color: red;">
-        {{ $message }}
-    </div>
-    @enderror
-    <div class="valid-feedback">
-        Looks good!
+    {!! Form::label('weight', 'Peso:', ['class' => 'form-label']) !!}
+    <div class="input-group has-validation">
+        {!! Form::text('weight', null, ['class' => 'form-control'. ($errors->has('weight') ? ' is-invalid' : ''), 'required' => 'required']) !!}
+        <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su peso aquí. Ingrese su peso en kg. Ejemplo: 65.9">
+            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+        </span>
+        @error('weight')
+        <div class="invalid-feedback" style="color: red;">
+            {{ $message }}
+        </div>
+        @enderror
+        <div class="valid-feedback">
+            Looks good!
+        </div>
     </div>
 </div>
 <div class="col-md-6">
-    {!! Form::label('height', 'Altura (en m):', ['class' => 'form-label']) !!}
-    {!! Form::text('height', null, ['class' => 'form-control'. ($errors->has('height') ? ' is-invalid' : ''), 'required' => 'required']) !!}
-    @error('height')
-    <div class="invalid-feedback" style="color: red;">
-        {{ $message }}
-    </div>
-    @enderror
-    <div class="valid-feedback">
-        Looks good!
+    {!! Form::label('height', 'Altura:', ['class' => 'form-label']) !!}
+    <div class="input-group has-validation">
+        {!! Form::text('height', null, ['class' => 'form-control'. ($errors->has('height') ? ' is-invalid' : ''), 'required' => 'required']) !!}
+        <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su codigo aquí. Ingrese su altura en metros. Ejemplo: 1.70">
+            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+        </span>
+        @error('height')
+        <div class="invalid-feedback" style="color: red;">
+            {{ $message }}
+        </div>
+        @enderror
+        <div class="valid-feedback">
+            Looks good!
+        </div>
     </div>
 </div>
 <div class="col-md-6">
@@ -84,13 +101,18 @@
 </div>
 <div class="col-md-6">
     {!! Form::label('code', 'Code:', ['class' => 'form-label']) !!}
-    {!! Form::text('code', null, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
-    @error('code')
-    <div class="invalid-feedback" style="color: red;">
-        {{ $message }}
-    </div>
-    @enderror
-    <div class="valid-feedback">
-        Looks good!
+    <div class="input-group has-validation">
+        {!! Form::text('code', null, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
+        <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su codigo aquí. No debe contener mas de 8 caracteres.">
+            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+        </span>
+        @error('code')
+        <div class="invalid-feedback" style="color: red;">
+            {{ $message }}
+        </div>
+        @enderror
+        <div class="valid-feedback">
+            Looks good!
+        </div>
     </div>
 </div>
