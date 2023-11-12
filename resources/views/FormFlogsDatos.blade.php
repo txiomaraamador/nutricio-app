@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <div class="col-md-6">
     {!! Form::label('type', 'Tipo de comida:', ['class' => 'form-label']) !!}
     {!! Form::select('type', ['Comida' => 'Comida', 'Cena' => 'Cena', 'Desayuno' => 'Desayuno', 'Colacion' => 'Colación'], null, ['class' => 'form-select'. ($errors->has('type') ? ' is-invalid' : ''), 'id' => 'type', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
@@ -15,7 +16,7 @@
     <div class="input-group has-validation">
         {!! Form::text('content', null, ['class' => 'form-control'. ($errors->has('content') ? ' is-invalid' : ''), 'id' => 'content', 'required' => 'required']) !!}
         <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el contenido aquí. Debe contener una longitud maxima de 255 caracteres.">
-            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+            <i class="bi bi-question-circle" style=" opacity: 0.5;"></i>
         </span>
         @error('content')
         <div class="invalid-feedback" style="color: red;">
@@ -44,7 +45,7 @@
     <div class="input-group has-validation">
         {!! Form::datetime('hour', null, ['class' => 'form-control'. ($errors->has('hour') ? ' is-invalid' : ''), 'id' => 'content', 'required' => 'required']) !!}
         <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la hora aquí. Debe tener formto HH:MM.">
-            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+            <i class="bi bi-question-circle" style=" opacity: 0.5;"></i>
         </span> 
         @error('hour')
         <div class="invalid-feedback" style="color: red;">

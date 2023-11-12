@@ -4,6 +4,7 @@
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <div class="col-md-6">
     {!! Form::label('name', 'Nombre:', ['class' => 'form-label']) !!}
         {!! Form::text('name', null, ['class' => 'form-control'. ($errors->has('name') ? ' is-invalid' : ''), 'required' => 'required']) !!}
@@ -34,7 +35,7 @@
     <div class="input-group has-validation">
         {!! Form::text('weight', null, ['class' => 'form-control'. ($errors->has('weight') ? ' is-invalid' : ''), 'required' => 'required']) !!}
         <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su peso aquí. Ingrese su peso en kg. Ejemplo: 65.9">
-            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+            <i class="bi bi-question-circle" style=" opacity: 0.5;"></i>
         </span>
         @error('weight')
         <div class="invalid-feedback" style="color: red;">
@@ -51,7 +52,7 @@
     <div class="input-group has-validation">
         {!! Form::text('height', null, ['class' => 'form-control'. ($errors->has('height') ? ' is-invalid' : ''), 'required' => 'required']) !!}
         <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su codigo aquí. Ingrese su altura en metros. Ejemplo: 1.70">
-            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+            <i class="bi bi-question-circle" style=" opacity: 0.5;"></i>
         </span>
         @error('height')
         <div class="invalid-feedback" style="color: red;">
@@ -104,7 +105,7 @@
     <div class="input-group has-validation">
         {!! Form::text('code', null, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
         <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su codigo aquí. No debe contener mas de 8 caracteres.">
-            <img src="/images/pregunta.jpg" style="width: 20px; opacity: 0.5;">
+            <i class="bi bi-question-circle" style=" opacity: 0.5;"></i>
         </span>
         @error('code')
         <div class="invalid-feedback" style="color: red;">

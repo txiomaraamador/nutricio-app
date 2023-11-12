@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('title', 'Inicio')
 @section('content')
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 px-0">
@@ -48,7 +48,7 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h1 class="card-title">NUTRICIO</h1>
+                <h1 class="card-title"> NUTRICIO</h1>
                 <p class="card-text">Planifica tus Comidas, Rastrea tu Progreso y Alcanza tus Metas Nutricionales.</p>
               </div>
             </div>
@@ -63,7 +63,11 @@
         <div class="card border-success mb-3">
           <div class="card-header">Redes sociales</div>
           <div class="card-body text-success">
-            <h5 class="card-title">Facebook: Nutricio<br>Instagram: nutricio_12<br>Correo: nutricio@gmail.com<br></h5>
+            <h5 class="card-title">
+              <i class="bi bi-facebook"> Nutricio</i><br>
+              <i class="bi bi-instagram"> nutricio_12</i><br>
+              <i class="bi bi-envelope-at"> nutricio@gmail.com</i>
+            </h5>
             <p class="card-text">Síguenos.</p>
           </div>
         </div>
