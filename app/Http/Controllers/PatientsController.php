@@ -16,8 +16,20 @@ class PatientsController extends Controller
         $query = $request->input('query');
     
         if ($query) {
-            $results = Patients::search($query)->get();
+        // Buscar por id_user
+        $results = Patients::search($query)->get();
+
+        // Buscar por nombre de usuario
+        $resultsByName = Patients::whereHas('nameuser', function ($nameUserQuery) use ($query) {
+            $nameUserQuery->where('name', 'LIKE', '%' . $query . '%');
+        })->get();
+
+        // Fusionar los resultados de ambas búsquedas
+        $results = $results->merge($resultsByName);
+
+
             $patients = Patients::with('nameuser')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
+            
             
             if ($results->isEmpty()) {
                 // Si no hay resultados, redirige de nuevo a la vista con un mensaje de error
