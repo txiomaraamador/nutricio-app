@@ -1,5 +1,5 @@
 @extends('layouts.pdfinicio')
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
 @section('content')
 <div class="container">
     <nav class="navbar bg-body-tertiary">

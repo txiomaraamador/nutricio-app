@@ -1,6 +1,4 @@
 @extends('layouts.pdfinicio')
-
-<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 @section('content')
 
     <div class="container">
@@ -16,6 +14,7 @@
                 <tr>
                     <th>Código</th>
                     <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Nutriologo</th>
                 </tr>
             </thead>
@@ -24,6 +23,7 @@
                     <tr>
                         <td>{{ $patient->code }}</td>
                         <td>{{ $patient->name }}</td>
+                        <td>{{ $patient->lastname }}</td>
                         <td>{{ $patient->nameuser->name }}</td>
                     </tr>
                 @endforeach
