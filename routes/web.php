@@ -32,7 +32,7 @@ Route::delete('/patients/delete/{id}',[PatientsController::class, 'destroy']);
 //ruta de busqueda
 Route::get('/search', [PatientsController::class, 'index'])->name('search');
 //ruta de pdf
-Route::get('patientspdf',[PatientsController::class, 'Pdf'])->name('listadopatients.pdf');
+Route::get('patientspdf',[PatientsController::class, 'Pdfs'])->name('listadopatients.pdf');
 
 
 Route::resource('/flogs',FlogsController::class);

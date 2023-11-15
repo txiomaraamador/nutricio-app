@@ -27,7 +27,7 @@
             }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
         </script>
 
-        {!! Form::open(['url' => '/patients', 'method' => 'POST', 'class' => 'row g-3 needs-validation']) !!}
+        {!! Form::open(['url' => '/patients', 'method' => 'POST', 'class' => 'row g-3 needs-validation','enctype' => 'multipart/form-data']) !!}
             {!! csrf_field() !!}
             @include('FormPacienteDatos')
             <div class="col-md-6">

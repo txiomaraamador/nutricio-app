@@ -30,14 +30,22 @@
                         <h5 class="card-title">{{ $patient->lastname }}, {{ $patient->name }}</h5>
                     </div>
                     <div class="card-body">
-                        
-                        <br>
-                        <p class="card-text">Fecha de nacimiento: {{ $patient->date_of_birth }}</p>
-                        <p class="card-text">Edad: {{ $patient->age }} años</p>
-                        <p class="card-text">Peso: {{ $patient->weight }} kg</p>
-                        <p class="card-text">Altura: {{ $patient->height }} m</p>
-                        <p class="card-text">Sexo: {{ $patient->sex }}</p>
-                        <p class="card-text">Nutriologo: {{ $patient->nameuser->name }}</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img style="height: 200px; width: 200px;"
+                                    class="card-img-top rounded-circle mx-auto d-block"
+                                    src="/avatars/{{ $patient->avatar }}" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <p class="card-text">Fecha de nacimiento: {{ $patient->date_of_birth }}</p>
+                                <p class="card-text">Edad: {{ $patient->age }} años</p>
+                                <p class="card-text">Peso: {{ $patient->weight }} kg</p>
+                                <p class="card-text">Altura: {{ $patient->height }} m</p>
+                                <p class="card-text">Sexo: {{ $patient->sex }}</p>
+                                <p class="card-text">Nutriologo: {{ $patient->nameuser->name }}</p>
+                            </div>
+                        </div><br>
+
                         <!-- Botones de editar y eliminar con formato de Bootstrap -->
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 

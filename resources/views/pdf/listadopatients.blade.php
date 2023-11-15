@@ -12,19 +12,23 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Nutriologo</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 @foreach ($patients as $patient)
                     <tr>
+                        
                         <td>{{ $patient->code }}</td>
                         <td>{{ $patient->name }}</td>
                         <td>{{ $patient->lastname }}</td>
                         <td>{{ $patient->nameuser->name }}</td>
+                        <td> <img src="{{ public_path('avatars/' . $patient->avatar) }}" width="50"></td>
                     </tr>
                 @endforeach
             </tbody>

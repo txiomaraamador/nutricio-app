@@ -117,3 +117,13 @@
         </div>
     </div>
 </div>
+@if(isset($patient) && $patient->avatar)
+<div class="mb-3">
+    {!! Form::label('current_image', 'Imagen actual:', ['class' => 'form-label']) !!}
+    <img src="{{ asset('avatars/' . $patient->avatar) }}" alt="Imagen actual" class="img-thumbnail" style="max-width: 200px;">
+</div>
+@endif
+<div class="mb-3">
+    {!! Form::label('image', 'Seleccionar una foto', ['class' => 'form-label']) !!}
+    {!! Form::file('avatar', ['class' => 'form-control']) !!}
+</div>

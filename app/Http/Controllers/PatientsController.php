@@ -76,6 +76,7 @@ class PatientsController extends Controller
                 'age.min' => 'La edad no debe ser menor que :min.',
                 'date_of_birth.required' => 'La fecha de nacimiento es obligatoria.',
                 'date_of_birth.date' => 'La fecha de nacimiento debe ser una fecha válida.',
+                'avatar.required' => 'El avatar es obligatorio.',
             ];
             $this->validate($request, [
                 'name' => 'required|string|max:255',
@@ -87,8 +88,8 @@ class PatientsController extends Controller
                 'height' => 'required|numeric|min:0',
                 'age' => 'required|integer|min:0',
                 'date_of_birth' => 'required|date',
+                'avatar' => 'nullable|image|mimes:jpeg,jpg,gif,svg|max:1048',
             ], $messages);
-
             // Crear un nuevo paciente
             $patient = new Patients();
             $patient->name = $request->input('name');
@@ -99,8 +100,14 @@ class PatientsController extends Controller
             $patient->weight = $request->input('weight');
             $patient->height = $request->input('height');
             $patient->age = $request->input('age');
+            if ($request->hasFile('avatar')) {
+                $imageName = time() . '.' . $request->avatar->extension();
+                $request->avatar->move(public_path('avatars'), $imageName);
+                $patient->avatar = $imageName;
+            }
             $patient->date_of_birth = $request->input('date_of_birth');
-
+            
+            
             $patient->save();
     
             return redirect("/patients")->with('success', 'Paciente creado con éxito');
@@ -144,6 +151,7 @@ class PatientsController extends Controller
                     'height' => 'required|numeric|min:0',
                     'age' => 'required|integer|min:0',
                     'date_of_birth' => 'required|date',
+                    'avatar' => 'nullable|image|mimes:jpeg,jpg,gif,svg|max:1048',
                 ]);
         
                 // Obtener el cliente a actualizar
@@ -163,6 +171,21 @@ class PatientsController extends Controller
                 $patient->weight = $request->input('weight');
                 $patient->height = $request->input('height');
                 $patient->age = $request->input('age');
+                        // Manejo de la imagen (si se proporciona)
+                if ($request->hasFile('avatar')) {
+                    // Eliminar la imagen anterior si existe
+                    if ($patient->avatar) {
+                        $imagePath = public_path('avatars/') . $patient->avatar;
+                        if (file_exists($imagePath)) {
+                            unlink($imagePath);
+                        }
+                    }
+
+                    $imageName = time() . '.' . $request->avatar->extension();
+                    $request->avatar->move(public_path('avatars'), $imageName);
+
+                    $patient->avatar = $imageName; // Guardar el nombre de la nueva imagen en el modelo
+                }
                 $patient->date_of_birth = $request->input('date_of_birth');
         
                 $patient->save();
@@ -177,6 +200,13 @@ class PatientsController extends Controller
         if ($patient) {
             $patient->refresh();
             $patientName = $patient->name;
+
+            // Borra la imagen asociada al cliente si existe
+            $imagePath = public_path('avatars/' . $patient->avatar); // Ruta a la imagen en el sistema de archivos
+            if (file_exists($imagePath)) {
+                unlink($imagePath); // Elimina la imagen
+            }
+            
             try {
                 $patient->delete();
                 return redirect("/patients")->with('success', 'El paciente '.$patientName.' ha sido eliminado con éxito');
@@ -188,13 +218,18 @@ class PatientsController extends Controller
             return redirect("/patients")->with('error', 'Paciente no encontrado');
         }
     }
-    public function Pdf()
+    public function Pdfs()
     {
+        
         $patients = Patients::with('nameuser')->get();
         
-        $pdf = PDF::loadView('pdf.listadopatients', compact('patients'));
-        
-        return $pdf->download('lista_de_pacientes.pdf');
+        try {
+            $pdf = PDF::loadView('pdf.listadopatients', compact('patients'));
+            return $pdf->download('lista_de_pacientes.pdf');
+        } catch (\Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
     }
+    
 }
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('weight',5,2);
             $table->float('height');
             $table->integer('age');
+            $table->string('avatar');
             $table->date('date_of_birth');
             $table->timestamps();
 
