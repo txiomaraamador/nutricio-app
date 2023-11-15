@@ -21,14 +21,13 @@ class PatientsController extends Controller
 
         // Buscar por nombre de usuario
         $resultsByName = Patients::whereHas('nameuser', function ($nameUserQuery) use ($query) {
-            $nameUserQuery->where('name', 'LIKE', '%' . $query . '%');
+            $nameUserQuery->where('name', 'iLIKE', '%' . $query . '%');
         })->get();
 
         // Fusionar los resultados de ambas búsquedas
         $results = $results->merge($resultsByName);
 
-
-            $patients = Patients::with('nameuser')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
+        $patients = Patients::with('nameuser')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
             
             
             if ($results->isEmpty()) {

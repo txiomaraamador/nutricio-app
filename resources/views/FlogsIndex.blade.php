@@ -3,7 +3,7 @@
 @section('title', 'Patients Index')
 
 @section('content')
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <div class="container">
         
         <script>
@@ -101,7 +101,7 @@
             {!! Form::open(['url' => '/flogs/create', 'class' => 'd-flex', 'role' => 'search']) !!}
                 {!! Form::button('Agregar comida', ['type' => 'submit', 'class' => 'btn btn-outline-success']) !!}
             {!! Form::close() !!}
-            <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-success">Descargar PDF</a>
+            <a href="{{route('listadoflogs.pdf')}}" class="btn btn-outline-success">PDF <i class="bi bi-download"></i></a>
 
             <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
                 <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >

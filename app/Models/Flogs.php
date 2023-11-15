@@ -11,14 +11,12 @@ class Flogs extends Model
     use HasFactory;
     use Searchable;
 
-    
-    public function namepatients()
-    {
-        return $this->belongsTo('App\Models\Patients', 'patient_id');
-    }
     public function patients()
     {
         return $this->hasMany ('App\Models\Patients', 'patient_id');
     }
-
+    public function namepatients()
+    {
+        return $this->belongsTo('App\Models\Patients', 'patient_id');
+    }
 }

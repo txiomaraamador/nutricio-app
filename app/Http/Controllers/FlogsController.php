@@ -13,9 +13,20 @@ class FlogsController extends Controller
     public function index(Request $request)
     {
         $query = $request->input('query');
-        if ($query) {
 
-            $results = Flogs::search($query)->get();
+        if ($query) {
+            // Buscar por id_user
+            $resultsA = Flogs::search($query)->get();
+
+            // Buscar por nombre de usuario en la relación namepatients
+            $resultsByNameP = Flogs::whereHas('namepatients', function ($namePatientsQuery) use ($query) {
+                $namePatientsQuery->where('name', 'iLIKE', '%' . $query . '%');
+            })->get();
+            
+            // Fusionar los resultados de ambas búsquedas
+            $results = $resultsA->merge($resultsByNameP);
+            //dd($results);
+
             $flogs = Flogs::with('namepatients')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
             
             if ($results->isEmpty()) {
