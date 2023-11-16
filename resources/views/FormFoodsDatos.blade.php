@@ -12,23 +12,6 @@
     </div>
 </div>
 <div class="col-md-6">
-    {!! Form::label('content', 'Contenido de la comida:', ['class' => 'form-label']) !!}
-    <div class="input-group has-validation">
-        {!! Form::text('content', null, ['class' => 'form-control'. ($errors->has('content') ? ' is-invalid' : ''), 'id' => 'content', 'required' => 'required']) !!}
-        <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el contenido aquí. Debe contener una longitud maxima de 255 caracteres.">
-            <i class="bi bi-question-circle" style=" opacity: 0.5;"></i>
-        </span>
-        @error('content')
-        <div class="invalid-feedback" style="color: red;">
-            {{ $message }}
-        </div>
-        @enderror
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-</div>
-<div class="col-md-6">
     {!! Form::label('date', 'Fecha:', ['class' => 'form-label']) !!}
     {!! Form::date('date', null, ['class' => 'form-control'. ($errors->has('date') ? ' is-invalid' : ''), 'id' => 'content', 'required' => 'required']) !!}
     @error('date')

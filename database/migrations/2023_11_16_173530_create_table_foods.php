@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('flogs', function (Blueprint $table) {
+        Schema::create('foods', function (Blueprint $table) {
             $table->id();
             $table->string('type', 100);
-            $table->string('aliment');
-	        $table->string('kcal');
-            $table->string('protein');
-            $table->string('carbohydrates');
-            
+            $table->date('date');
+            $table->time('hour');
+            $table->unsignedBigInteger('patient_id');
             $table->timestamps();
+
+            $table->foreign('patient_id')->references('id')->on('patients');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flogs');
+        Schema::dropIfExists('table_foods');
     }
 };

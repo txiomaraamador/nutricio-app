@@ -51,22 +51,21 @@
             </thead>
             <!-- Cuerpo de la tabla -->
             <tbody class="table-group-divider">
-                @foreach ($flogs as $flog)
+                @foreach ($foods as $food)
                     <tr>
-                        <td>{{ $flog->type }}</td>
-                        <td>{{ $flog->content }}</td>
-                        <td>{{ $flog->date }}</td>
-                        <td>{{ $flog->hour }}</td>
+                        <td>{{ $food->type }}</td>
+                        <td>{{ $food->date }}</td>
+                        <td>{{ $food->hour }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
                                 <!-- Botón para editar el cliente -->
-                                {!! Form::open(['route' => ['flogs.edit', $flog->id], 'method' => 'GET']) !!}
+                                {!! Form::open(['route' => ['foods.edit', $food->id], 'method' => 'GET']) !!}
                                     {!! Form::button('Editar', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
 
                                 <!-- Botón de eliminación -->
-                                {!! Form::open(['route' => ['flogs.destroy', $flog->id], 'method' => 'DELETE']) !!}
+                                {!! Form::open(['route' => ['foods.destroy', $food->id], 'method' => 'DELETE']) !!}
                                     {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
                             </div>

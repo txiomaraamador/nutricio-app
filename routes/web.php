@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientsController;
-use App\Http\Controllers\FlogsController;
+use App\Http\Controllers\FoodsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,17 +35,17 @@ Route::get('/search', [PatientsController::class, 'index'])->name('search');
 Route::get('patientspdf',[PatientsController::class, 'Pdfs'])->name('listadopatients.pdf');
 
 
-Route::resource('/flogs',FlogsController::class);
-Route::post('/flogs/create',[FlogsController::class, 'create']);
-Route::get('/flogs/show/{id}',[FlogsController::class, 'show']);
-Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
-Route::put('/flogs/{id}',[FlogsController::class, 'update']);
-Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
+Route::resource('/foods',FoodsController::class);
+Route::post('/foods/create',[FoodsController::class, 'create']);
+Route::get('/foods/show/{id}',[FoodsController::class, 'show']);
+Route::get('/foods/edit/{id}',[FoodsController::class, 'edit']);
+Route::put('/foods/{id}',[FoodsController::class, 'update']);
+Route::delete('/foods/delete/{id}',[FoodsController::class, 'destroy']);
 //ruta de historial de flogs para cada paciente
-Route::get('/patients/{id}/flogs', [FlogsController::class, 'showFlogs'])->name('patients.showFlogs');
+Route::get('/patients/{id}/foods', [FoodsController::class, 'showFoods'])->name('patients.showFoods');
 //ruta de pdf del historial de cada paciente
-Route::get('/patients/{id}/generate-pdf',[FlogsController::class, 'generatePdf'])->name('listado.pdf');
+Route::get('/patients/{id}/generate-pdf',[FoodsController::class, 'generatePdf'])->name('listado.pdf');
 //ruta de busqueda de flogs
-Route::get('/searchflog', [FlogsController::class, 'index'])->name('searchflog');
+Route::get('/searchflog', [FoodsController::class, 'index'])->name('searchfood');
 
-Route::get('flogspdf',[FlogsController::class, 'Pdf'])->name('listadoflogs.pdf');
+Route::get('foodspdf',[FoodsController::class, 'Pdf'])->name('listadofoods.pdf');

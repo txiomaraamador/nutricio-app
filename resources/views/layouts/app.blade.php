@@ -54,11 +54,11 @@
                                 Comidas
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="/flogs">Lista de comidas</a></li>
+                              <li><a class="dropdown-item" href="/foods">Lista de comidas</a></li>
                               <li>
                                 <hr class="dropdown-divider">
                               </li>
-                              <li><a class="dropdown-item" href="/flogs/create">Agregar Comida</a></li>
+                              <li><a class="dropdown-item" href="/foods/create">Agregar Comida</a></li>
                             </ul>
                           </li> 
                           <hr style="color: #000000;" />

@@ -61,7 +61,7 @@
                         <td>{{ $patient->nameuser->name }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                {!! Form::open(['route' => ['patients.showFlogs', $patient->id], 'method' => 'GET']) !!}
+                                {!! Form::open(['route' => ['patients.showFoods', $patient->id], 'method' => 'GET']) !!}
                                     {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                                 {!! Form::open(['route' => ['patients.show', $patient->id], 'method' => 'GET']) !!}
@@ -123,7 +123,7 @@
                         <td>{{ $patient->nameuser->name }}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                {!! Form::open(['route' => ['patients.showFlogs', $patient->id], 'method' => 'GET']) !!}
+                                {!! Form::open(['route' => ['patients.showFoods', $patient->id], 'method' => 'GET']) !!}
                                     {!! Form::button('Ver historial de comidas', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                                 {!! Form::open(['route' => ['patients.show', $patient->id], 'method' => 'GET']) !!}
