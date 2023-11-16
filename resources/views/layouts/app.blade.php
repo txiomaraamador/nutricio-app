@@ -62,6 +62,14 @@
                             </ul>
                           </li> 
                           <hr style="color: #000000;" />
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Catalogos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/flogs">Lista de alimentos</a></li>
+                                </ul>
+                                
+                          <hr style="color: #000000;" />
                           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cuenta</h5>
 
                         @guest

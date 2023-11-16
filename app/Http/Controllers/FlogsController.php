@@ -18,16 +18,7 @@ class FlogsController extends Controller
             // Buscar por id_user
             $resultsA = Flogs::search($query)->get();
 
-            // Buscar por nombre de usuario en la relación namepatients
-            $resultsByNameP = Flogs::whereHas('namepatients', function ($namePatientsQuery) use ($query) {
-                $namePatientsQuery->where('name', 'iLIKE', '%' . $query . '%');
-            })->get();
-            
-            // Fusionar los resultados de ambas búsquedas
-            $results = $resultsA->merge($resultsByNameP);
-            //dd($results);
-
-            $flogs = Flogs::with('namepatients')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
+            $flogs = Flogs::all()->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
             
             if ($results->isEmpty()) {
                 // Si no hay resultados, redirige de nuevo a la vista con un mensaje de error
@@ -38,48 +29,35 @@ class FlogsController extends Controller
             }
             
         } else {
-            $flogs = Flogs::with('namepatients')->get();
+            $flogs = Flogs::all();
             return view('flogsindex', compact('flogs'));    
         }
     }
 
     public function create()
     {
-        $patients = Patients::all();
-        return view('flogscreate', compact('patients'));
+        return view('flogscreate');
     }
 
     public function store(Request $request)
     {
         try {
             $messages = [
-                'type.required' => 'El tipo de comida es obligatorio.',
-                'type.in' => 'El tipo de comida debe ser "Comida", "Cena", "Desayuno" o "Colacion".',
-                'content.required' => 'El contenido de la comida es obligatorio.',
-                'content.string' => 'El contenido de la comida debe ser una cadena de texto.',
-                'content.max' => 'El contenido de la comida no debe tener más de :max caracteres.',
-                'patient_id.required' => 'El ID del paciente es obligatorio.',
-                'patient_id.exists' => 'El paciente seleccionado no existe.',
-                'date.required' => 'La fecha es obligatoria.',
-                'date.date' => 'La fecha debe ser una fecha válida.',
-                'hour.required' => 'La hora es obligatoria.',
-                'hour.date_format' => 'La hora debe tener el formato H:M.',
+               
             ];
             $this->validate($request, [
-                'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
-                'content' => 'required|string|max:255',
-                'patient_id' => 'required|exists:patients,id',
-                'date' => 'required|date',
-                'hour' => 'required|date_format:H:i',
+            
+               
             ],$messages);
 
             $flog = new Flogs();
             $flog -> type = $request -> input('type');
-            $flog -> content = $request -> input('content');
-            $flog -> patient_id = $request -> input('patient_id');
-            $flog -> date = $request -> input('date');
-            $flog -> hour = $request -> input('hour');
+            $flog -> aliment = $request -> input('aliment');
+            $flog -> kcal = $request -> input('kcal');
+            $flog -> protein = $request -> input('protein');
+            $flog -> carbohydrates = $request -> input('carbohydrates');
             $flog -> save();
+
             return redirect("/flogs")->with('success', 'Comida agregada con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
@@ -111,11 +89,8 @@ class FlogsController extends Controller
     {
         // Validación de datos
         $this->validate($request, [
-            'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
-                'content' => 'required|string|max:255',
-                //'patient_id' => 'required|exists:patients,id',
-                'date' => 'required|date',
-                'hour' => 'required|date_format:H:i',
+           // 'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
+               
         ]);
 
         // Obtener el cliente a actualizar
@@ -126,12 +101,11 @@ class FlogsController extends Controller
             return redirect()->route('flogs.index')->with('error', 'Comida no encontrado');
         }
 
-        // Actualizar los datos del cliente
-        $flog->type = $request->input('type');
-        $flog->content = $request->input('content');
-      //  $flog->patient_id = $request->input('patient_id');
-        $flog -> date = $request -> input('date');
-        $flog -> hour = $request -> input('hour');
+        $flog -> type = $request -> input('type');
+        $flog -> aliment = $request -> input('aliment');
+        $flog -> kcal = $request -> input('kcal');
+        $flog -> protein = $request -> input('protein');
+        $flog -> carbohydratos = $request -> input('carbohydratos');
 
 
         $flog->save();
@@ -155,22 +129,9 @@ class FlogsController extends Controller
             return redirect("/flogs")->with('error', 'Comida no encontrado');
         }
     }
-    public function showFlogs($id)
-    {
-        $patient = Patients::find($id);
-
-        if (!$patient) {
-            return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
-        }
-    
-        $flogs = Flogs::where('patient_id', $id)->get();
-    
-        return view('flogspatients', compact('flogs', 'patient'));
-    }
 
     public function generatePdf($id)
         {
-            $patient = Patients::find($id);
             $flogs = Flogs::where('patient_id', $id)->get();
         
             $pdf = PDF::loadView('pdf.listadoflogspatients', compact('flogs', 'patient'));

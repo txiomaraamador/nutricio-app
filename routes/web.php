@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\FoodsController;
 
+use App\Http\Controllers\FlogsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,17 @@ Route::get('/patients/{id}/foods', [FoodsController::class, 'showFoods'])->name(
 //ruta de pdf del historial de cada paciente
 Route::get('/patients/{id}/generate-pdf',[FoodsController::class, 'generatePdf'])->name('listado.pdf');
 //ruta de busqueda de flogs
-Route::get('/searchflog', [FoodsController::class, 'index'])->name('searchfood');
+Route::get('/searchfood', [FoodsController::class, 'index'])->name('searchfood');
 
 Route::get('foodspdf',[FoodsController::class, 'Pdf'])->name('listadofoods.pdf');
+
+Route::resource('/flogs',FlogsController::class);
+Route::post('/flogs/create',[FlogsController::class, 'create']);
+Route::get('/flogs/show/{id}',[FlogsController::class, 'show']);
+Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
+Route::put('/flogs/{id}',[FlogsController::class, 'update']);
+Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
+//ruta de busqueda
+Route::get('/searchflog', [FlogsController::class, 'index'])->name('search');
+//ruta de pdf
+Route::get('flogspdf',[FlogsController::class, 'Pdfs'])->name('listadoflogs.pdf');
