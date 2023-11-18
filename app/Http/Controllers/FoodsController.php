@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Foods;
+use App\Models\Flogs;
 use App\Models\Patients;
 use PDF;
 
@@ -45,7 +46,8 @@ class FoodsController extends Controller
     public function create()
     {
         $patients = Patients::all();
-        return view('foodscreate', compact('patients'));
+        $flogs = Flogs::all();
+        return view('foodscreate', compact('patients','flogs'));
     }
 
     public function store(Request $request)
@@ -75,6 +77,15 @@ class FoodsController extends Controller
             $food -> date = $request -> input('date');
             $food -> hour = $request -> input('hour');
             $food -> save();
+            // Obtener el ID de la nueva instancia de Food
+            $foodId = $food->id;
+
+            // Adjuntar Flogs (sustituye [1, 2, 3] con los IDs de Flog que deseas adjuntar)
+            //$flogIds = [1, 2]; // Modifica este array con los IDs de Flog deseados
+            $flogIds = $request->input('flogs', []); // Recupera los IDs de los Flogs desde el formulario
+            
+            $food->flogs()->attach($flogIds);
+
             return redirect("/foods")->with('success', 'Comida agregada con éxito');
         } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea

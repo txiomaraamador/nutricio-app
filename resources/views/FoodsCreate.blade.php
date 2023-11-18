@@ -36,10 +36,25 @@
                 {!! Form::select('patient_id', $patients->pluck('name', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elige el paciente']) !!}
             </div>
             @include('FormFoodsDatos')
-            <div class="d-grid gap-2">
-                {!! Form::submit('Guardar', ['class' => 'btn btn-success']) !!}
-                <a href="/foods" class="btn btn-success">Cancelar</a>
+            <h2>Agregar alimentos</h2>
+        <form method="POST" action="{{ route('foods.store') }}">
+            @csrf
+            <div class="form-group">
+                {!! Form::label('flog_type', 'Selecciona el Tipo de Flogs:') !!}
+                {!! Form::select('flog_type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Eligir tipo de alimento']) !!}
             </div>
+            
+            <!-- Resto del formulario -->
+            <div class="form-group">
+                {!! Form::label('flogs', 'Selecciona los Flogs:') !!}
+                {!! Form::select('flogs[]', $flogs->pluck('aliment', 'id'), null,['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Eligir un alimento']) !!}
+            </div>
+            
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a href="/foods" class="btn btn-success">Cancelar</a>
+        </form>
+        
         {!! Form::close() !!}
+        
     </div>
 @endsection

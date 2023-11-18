@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('flogs_foods', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('food_id');
-            $table->unsignedBigInteger('flog_id');
+            $table->unsignedBigInteger('foods_id');
+            $table->unsignedBigInteger('flogs_id');
             $table->timestamps();
 
-            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
-            $table->foreign('flog_id')->references('id')->on('flogs')->onDelete('cascade');
+            $table->foreign('foods_id')->references('id')->on('foods')->onDelete('cascade');
+            $table->foreign('flogs_id')->references('id')->on('flogs')->onDelete('cascade');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_food_flogs');
+        Schema::dropIfExists('flogs_foods');
     }
 };
