@@ -9,5 +9,9 @@ class Flogs extends Model
 {
     use HasFactory;
 
+    //relacion muchos a muchos
+    public function foods(){
+        return $this->belongsToMany('App\Models\Foods');
+    }
     
 }

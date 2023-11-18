@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('food_flogs', function (Blueprint $table) {
+        Schema::create('flog_food', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('food_id');
             $table->unsignedBigInteger('flog_id');
             $table->timestamps();
 
-            $table->foreign('food_id')->references('id')->on('foods');
-            $table->foreign('flog_id')->references('id')->on('flogs');
+            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
+            $table->foreign('flog_id')->references('id')->on('flogs')->onDelete('cascade');
         });
     }
 

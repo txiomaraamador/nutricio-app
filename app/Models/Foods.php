@@ -19,4 +19,8 @@ class Foods extends Model
     {
         return $this->belongsTo('App\Models\Patients', 'patient_id');
     }
+    //relacion muchos a muchos
+    public function flogs(){
+        return $this->belongsToMany('App\Models\Flogs');
+    }
 }
