@@ -1,9 +1,11 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 <div class="card">
     <div class="card-body">
         <div class="form-group row">
             <div class="col-md-4">
                 {!! Form::label('flog_type', 'Selecciona el Tipo de Flogs:', ['class' => 'form-label']) !!}
-                {!! Form::select('flog_type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Eligir tipo de alimento']) !!}
+                {!! Form::select('flog_type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elegir tipo de alimento',]) !!}
             </div>
 
             <div class="col-md-4">
@@ -46,5 +48,9 @@
                
             </div>
         </div>
+         
     </div>
+        <button type="button" class="btn btn-danger remove-form float-end"><i class="bi bi-x-circle"></i></button>
+     
 </div>
+

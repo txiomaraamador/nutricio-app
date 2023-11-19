@@ -192,4 +192,5 @@ class FoodsController extends Controller
         
             return $pdf->download('listado_todas_las_comidas.pdf');
         }
+
 }

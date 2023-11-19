@@ -2,6 +2,7 @@
 
 @section('title', 'Flog Create')
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <div class="container mt-5">
         <h1 class="display-6">Agregar Comida</h1>
@@ -36,16 +37,23 @@
                 {!! Form::select('patient_id', $patients->pluck('name', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elige el paciente']) !!}
             </div>
             @include('FormFoodsDatos')
-            <h2>Agregar alimentos</h2>
-       
+            <hr style="color: #000000;" />
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Agregar alimentos</h2>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" id="addFormFlogs" class="btn btn-success float-end"><i class="bi bi-plus-circle"></i></button>
+                </div>
+            </div>       
             @csrf
 
-            <button type="button" id="addFormFlogs" class="btn btn-primary">Agregar otro FormFlogs</button>
+            
 
             <div id="formFlogsContainer">
                 <div class="clonable-form">
-                    @include('FormFlogs')
-                    <button type="button" class="btn btn-danger remove-form">Eliminar FormFlogs</button>
+                    @include('FormFlogsFoods')
+                    
                 </div>
             </div>
 
