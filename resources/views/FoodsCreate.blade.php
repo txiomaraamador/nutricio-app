@@ -37,18 +37,29 @@
             </div>
             @include('FormFoodsDatos')
             <h2>Agregar alimentos</h2>
-        <form method="POST" action="{{ route('foods.store') }}">
+       
             @csrf
-            <div class="form-group">
-                {!! Form::label('flog_type', 'Selecciona el Tipo de Flogs:') !!}
-                {!! Form::select('flog_type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Eligir tipo de alimento']) !!}
+
+            <button type="button" id="addFormFlogs" class="btn btn-primary">Agregar otro FormFlogs</button>
+
+            <div id="formFlogsContainer">
+                @include('FormFlogs')
             </div>
-            
-            <!-- Resto del formulario -->
-            <div class="form-group">
-                {!! Form::label('flogs', 'Selecciona los Flogs:') !!}
-                {!! Form::select('flogs[]', $flogs->pluck('aliment', 'id'), null,['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Eligir un alimento']) !!}
-            </div>
+        
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#addFormFlogs').click(function() {
+                        // Clona el contenido de FormFlogs y agrega un identificador único
+                        var clonedFormFlogs = $('#formFlogsContainer').children().first().clone();
+                        var uniqueId = Date.now();
+                        clonedFormFlogs.find('[id]').each(function() {
+                            $(this).attr('id', $(this).attr('id') + uniqueId);
+                        });
+                        $('#formFlogsContainer').append(clonedFormFlogs);
+                    });
+                });
+            </script>
             
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="/foods" class="btn btn-success">Cancelar</a>
@@ -57,4 +68,5 @@
         {!! Form::close() !!}
         
     </div>
+    
 @endsection
