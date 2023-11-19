@@ -43,24 +43,35 @@
             <button type="button" id="addFormFlogs" class="btn btn-primary">Agregar otro FormFlogs</button>
 
             <div id="formFlogsContainer">
-                @include('FormFlogs')
+                <div class="clonable-form">
+                    @include('FormFlogs')
+                    <button type="button" class="btn btn-danger remove-form">Eliminar FormFlogs</button>
+                </div>
             </div>
-        
+
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script>
                 $(document).ready(function() {
-                    $('#addFormFlogs').click(function() {
-                        // Clona el contenido de FormFlogs y agrega un identificador único
-                        var clonedFormFlogs = $('#formFlogsContainer').children().first().clone();
+                    // Agrega un nuevo FormFlogs
+                    function addFormFlogs() {
+                        var clonedFormFlogs = $('.clonable-form').first().clone();
                         var uniqueId = Date.now();
                         clonedFormFlogs.find('[id]').each(function() {
                             $(this).attr('id', $(this).attr('id') + uniqueId);
                         });
+                        clonedFormFlogs.find('.remove-form').click(function() {
+                            // Elimina el FormFlogs clonado al hacer clic en el botón de eliminación
+                            $(this).parent().remove();
+                        });
                         $('#formFlogsContainer').append(clonedFormFlogs);
-                    });
+                    }
+        
+                    // Agrega un nuevo FormFlogs al cargar la página
+                    addFormFlogs();
+        
+                    $('#addFormFlogs').click(addFormFlogs);
                 });
             </script>
-            
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="/foods" class="btn btn-success">Cancelar</a>
         </form>
