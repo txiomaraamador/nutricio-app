@@ -69,7 +69,7 @@
                         });
                         clonedFormFlogs.find('.remove-form').click(function() {
                             // Elimina el FormFlogs clonado al hacer clic en el botón de eliminación
-                            $(this).parent().remove();
+                            $(this).closest('table').remove();
                         });
                         $('#formFlogsContainer').append(clonedFormFlogs);
                     }
@@ -87,5 +87,6 @@
         {!! Form::close() !!}
         
     </div>
+    <hr style="color: #000000;" />
     
 @endsection
