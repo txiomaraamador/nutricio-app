@@ -79,8 +79,8 @@
                             $('select[name="flogs[]"]').empty();
         
                             // Agregar las nuevas opciones al segundo select
-                            $.each(data, function(key, value){
-                                $('select[name="flogs[]"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            $.each(data, function(index, item){
+                                $('select[name="flogs[]"]').append('<option value="'+ item.id +'">'+ item.aliment +'</option>');
                             });
                         },
                         error: function(error){
