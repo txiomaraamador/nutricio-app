@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <div class="col-md-6">
-    {!! Form::label('type', 'Tipo de comida:', ['class' => 'form-label']) !!}
-    {!! Form::select('type', ['Comida' => 'Comida', 'Cena' => 'Cena', 'Desayuno' => 'Desayuno', 'Colacion' => 'Colación'], null, ['class' => 'form-select'. ($errors->has('type') ? ' is-invalid' : ''), 'id' => 'type', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
-    @error('type')
+    {!! Form::label('type_name', 'Tipo de comida:', ['class' => 'form-label']) !!}
+    {!! Form::select('type_name', ['Comida' => 'Comida', 'Cena' => 'Cena', 'Desayuno' => 'Desayuno', 'Colacion' => 'Colacion'], null, ['class' => 'form-select'. ($errors->has('type_name') ? ' is-invalid' : ''), 'id' => 'type_name', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
+    @error('type_name')
     <div class="invalid-feedback" style="color: red;">
         {{ $message }}
     </div>

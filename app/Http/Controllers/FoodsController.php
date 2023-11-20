@@ -55,7 +55,7 @@ class FoodsController extends Controller
         try {
             $messages = [
                 'type.required' => 'El tipo de comida es obligatorio.',
-                'type.in' => 'El tipo de comida debe ser "Comida", "Cena", "Desayuno" o "Colacion".',
+              //  'type.in' => 'El tipo de comida debe ser "Comida", "Cena", "Desayuno" o "Colacion".',
                 'patient_id.required' => 'El ID del paciente es obligatorio.',
                 'patient_id.exists' => 'El paciente seleccionado no existe.',
                 'date.required' => 'La fecha es obligatoria.',
@@ -64,7 +64,7 @@ class FoodsController extends Controller
                 'hour.date_format' => 'La hora debe tener el formato H:M.',
             ];
             $this->validate($request, [
-                'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
+                //'type' => 'required|in:Comida,Cena,Desayuno,Colacion',
 
                 'patient_id' => 'required|exists:patients,id',
                 'date' => 'required|date',
@@ -72,7 +72,7 @@ class FoodsController extends Controller
             ],$messages);
 
             $food = new Foods();
-            $food -> type = $request -> input('type');
+            $food -> type = $request -> input('type_name');
             $food -> patient_id = $request -> input('patient_id');
             $food -> date = $request -> input('date');
             $food -> hour = $request -> input('hour');
