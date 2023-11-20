@@ -62,34 +62,4 @@
             
         </table>
 
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                // Manejar el cambio en el primer select
-                $('select[name="type"]').on('change', function(){
-                    // Obtener el valor seleccionado en el primer select
-                    var selectedType = $(this).val();
-        
-                    // Realizar una solicitud AJAX para obtener las opciones actualizadas para el segundo select
-                    $.ajax({
-                        url: '/getAliments/' + selectedType, // Corregir la URL concatenando el valor de selectedType
-                        type: 'GET', // Corregir 'id' a 'type'
-                        success: function(data){
-                            // Limpiar las opciones actuales en el segundo select
-                            $('select[name="flogs[]"]').empty();
-        
-                            // Agregar las nuevas opciones al segundo select
-                            $.each(data, function(index, item){
-                                $('select[name="flogs[]"]').append('<option value="'+ item.id +'">'+ item.aliment +'</option>');
-                            });
-                        },
-                        error: function(error){
-                            console.log(error);
-                        }
-                    });
-                });
-            });
-        </script>
-        
-        
         

@@ -57,6 +57,32 @@
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script>
                 $(document).ready(function() {
+                    // Función para manejar el cambio en el select
+                    function handleTypeChange(select) {
+                        var selectedType = select.val();
+            
+                        $.ajax({
+                            url: '/getAliments/' + selectedType,
+                            type: 'GET',
+                            success: function(data){
+                                var selectAliment = select.closest('tr').find('select[name="flogs[]"]');
+                                selectAliment.empty();
+            
+                                $.each(data, function(index, item){
+                                    selectAliment.append('<option value="'+ item.id +'">'+ item.aliment +'</option>');
+                                });
+                            },
+                            error: function(error){
+                                console.log(error);
+                            }
+                        });
+                    }
+            
+                    // Delegación de eventos para manejar cambios en selects dentro de #formFlogsContainer
+                    $('#formFlogsContainer').on('change', 'select[name="type"]', function() {
+                        handleTypeChange($(this));
+                    });
+            
                     // Agrega un nuevo FormFlogs
                     function addFormFlogs() {
                         var clonedFormFlogs = $('.clonable-form').first().clone();
@@ -64,19 +90,26 @@
                         clonedFormFlogs.find('[id]').each(function() {
                             $(this).attr('id', $(this).attr('id') + uniqueId);
                         });
+            
                         clonedFormFlogs.find('.remove-form').click(function() {
                             // Elimina el FormFlogs clonado al hacer clic en el botón de eliminación
                             $(this).closest('table').remove();
                         });
+            
                         $('#formFlogsContainer').append(clonedFormFlogs);
+                        
+                        // Desencadena el evento de cambio para el nuevo formulario clonado
+                        clonedFormFlogs.find('select[name="type"]').trigger('change');
                     }
-        
+            
                     // Agrega un nuevo FormFlogs al cargar la página
                     addFormFlogs();
-        
+            
                     $('#addFormFlogs').click(addFormFlogs);
                 });
             </script>
+            
+            
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="/foods" class="btn btn-success">Cancelar</a>
         </form>
