@@ -61,3 +61,6 @@ Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
 Route::get('/searchflog', [FlogsController::class, 'index'])->name('search');
 //ruta de pdf
 Route::get('flogspdf',[FlogsController::class, 'Pdfs'])->name('listadoflogs.pdf');
+
+
+Route::get('/getAliments/{id}', [FlogsController::class, 'getAliments']);

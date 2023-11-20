@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
         <table class="table table-borderless">
             <thead>
                 <tr>
@@ -16,7 +15,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            {!! Form::select('flog_type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elegir tipo de alimento',]) !!}
+                            {!! Form::select('type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elegir tipo de alimento',]) !!}
                         </div>
                     </td>
                     <td>
@@ -62,6 +61,35 @@
             </tbody>
             
         </table>
-       
 
-
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                // Manejar el cambio en el primer select
+                $('select[name="type"]').on('change', function(){
+                    // Obtener el valor seleccionado en el primer select
+                    var selectedType = $(this).val();
+        
+                    // Realizar una solicitud AJAX para obtener las opciones actualizadas para el segundo select
+                    $.ajax({
+                        url: '/getAliments/' + selectedType, // Corregir la URL concatenando el valor de selectedType
+                        type: 'GET', // Corregir 'id' a 'type'
+                        success: function(data){
+                            // Limpiar las opciones actuales en el segundo select
+                            $('select[name="flogs[]"]').empty();
+        
+                            // Agregar las nuevas opciones al segundo select
+                            $.each(data, function(key, value){
+                                $('select[name="flogs[]"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            });
+                        },
+                        error: function(error){
+                            console.log(error);
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        
+        

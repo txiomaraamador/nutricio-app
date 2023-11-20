@@ -147,7 +147,24 @@ class FlogsController extends Controller
         
             return $pdf->download('listado_todas_las_comidas.pdf');
         }
-        
+    
+        public function getAliments($id)
+        {
+          // Utiliza el método find para obtener el modelo correspondiente
+        $flog = Flogs::find($id);
+        $flogId = $flog->type;
+        //dd($flogId);
+        // Verifica si se encontró el modelo antes de continuar
+        if ($flog) {
+            // Obtén los alimentos para el ID específico
+            $aliments = Flogs::select('id', 'aliment')->where('type', $flogId)->get();
+            return response()->json($aliments);
+        } else {
+            // Maneja el caso en que no se encuentre el modelo con el ID proporcionado
+            // Puedes lanzar una excepción, devolver un mensaje de error, o tomar otra acción según tus necesidades.
+            dd("No se encontró el modelo con ID: {$id->id}");
+        }
     }
+}
 
 

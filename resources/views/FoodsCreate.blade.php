@@ -46,9 +46,6 @@
                     <button type="button" id="addFormFlogs" class="btn btn-success float-end"><i class="bi bi-plus-circle"></i></button>
                 </div>
             </div>       
-            @csrf
-
-            
 
             <div id="formFlogsContainer">
                 <div class="clonable-form">
