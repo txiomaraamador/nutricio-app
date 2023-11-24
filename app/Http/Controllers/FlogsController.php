@@ -165,6 +165,31 @@ class FlogsController extends Controller
             dd("No se encontró el modelo con ID: {$id->id}");
         }
     }
+    public function getValores($id)
+    {
+        // Utiliza el método find para obtener el modelo correspondiente
+        $flog = Flogs::find($id);
+        $flogaliment = $flog->aliment;
+        //dd($flogaliment);
+        // Verifica si se encontró el modelo antes de continuar
+        if ($flog) {
+            // Obtén los valores específicos de kcal, protein y carbohydrates para el alimento
+            $alimentData = Flogs::select('kcal', 'protein', 'carbohydrates')
+                ->where('aliment', $flogaliment)
+                ->first();
+                //dd($alimentData);
+            if ($alimentData) {
+                return response()->json($alimentData);
+            } else {
+                // Maneja el caso en que no se encuentre el alimento con el nombre proporcionado
+                dd("No se encontró el alimento con el nombre: {$flog->aliment}");
+            }
+        } else {
+            // Maneja el caso en que no se encuentre el modelo con el ID proporcionado
+            dd("No se encontró el modelo con ID: {$id->id}");
+        }
+    }
+
 }
 
 

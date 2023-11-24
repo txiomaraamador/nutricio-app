@@ -56,58 +56,78 @@
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script>
-                $(document).ready(function() {
-                    // Función para manejar el cambio en el select
+                $(document).ready(function () {
                     function handleTypeChange(select) {
                         var selectedType = select.val();
             
                         $.ajax({
                             url: '/getAliments/' + selectedType,
                             type: 'GET',
-                            success: function(data){
+                            success: function (data) {
                                 var selectAliment = select.closest('tr').find('select[name="flogs[]"]');
                                 selectAliment.empty();
             
-                                $.each(data, function(index, item){
-                                    selectAliment.append('<option value="'+ item.id +'">'+ item.aliment +'</option>');
+                                $.each(data, function (index, item) {
+                                    selectAliment.append('<option value="' + item.id + '">' + item.aliment + '</option>');
                                 });
+            
+                                // Nueva llamada AJAX para obtener valores y actualizar etiquetas
+                                handleAlimentChange(selectAliment);
                             },
-                            error: function(error){
+                            error: function (error) {
                                 console.log(error);
                             }
                         });
                     }
             
-                    // Delegación de eventos para manejar cambios en selects dentro de #formFlogsContainer
-                    $('#formFlogsContainer').on('change', 'select[name="type"]', function() {
+                    function handleAlimentChange(select) {
+                        var selectedAliment = select.val();
+            
+                        $.ajax({
+                            url: '/getValores/' + selectedAliment,
+                            type: 'GET',
+                            success: function (values) {
+                                var row = select.closest('tr');
+                                row.find('label[for="kcal"]').text(values.kcal);
+                                row.find('label[for="protein"]').text(values.protein);
+                                row.find('label[for="carbohydrates"]').text(values.carbohydrates);
+                            },
+                            error: function (error) {
+                                console.log(error);
+                            }
+                        });
+                    }
+            
+                    $('#formFlogsContainer').on('change', 'select[name="type"]', function () {
                         handleTypeChange($(this));
                     });
             
-                    // Agrega un nuevo FormFlogs
+                    $('#formFlogsContainer').on('change', 'select[name="flogs[]"]', function () {
+                        handleAlimentChange($(this));
+                    });
+            
                     function addFormFlogs() {
                         var clonedFormFlogs = $('.clonable-form').first().clone();
                         var uniqueId = Date.now();
-                        clonedFormFlogs.find('[id]').each(function() {
+                        clonedFormFlogs.find('[id]').each(function () {
                             $(this).attr('id', $(this).attr('id') + uniqueId);
                         });
             
-                        clonedFormFlogs.find('.remove-form').click(function() {
-                            // Elimina el FormFlogs clonado al hacer clic en el botón de eliminación
+                        clonedFormFlogs.find('.remove-form').click(function () {
                             $(this).closest('table').remove();
                         });
             
                         $('#formFlogsContainer').append(clonedFormFlogs);
-                        
-                        // Desencadena el evento de cambio para el nuevo formulario clonado
                         clonedFormFlogs.find('select[name="type"]').trigger('change');
                     }
             
-                    // Agrega un nuevo FormFlogs al cargar la página
                     addFormFlogs();
             
                     $('#addFormFlogs').click(addFormFlogs);
                 });
             </script>
+            
+            
             
             
             <button type="submit" class="btn btn-success">Guardar</button>
