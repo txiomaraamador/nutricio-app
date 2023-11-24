@@ -105,6 +105,29 @@
                     $('#formFlogsContainer').on('change', 'select[name="flogs[]"]', function () {
                         handleAlimentChange($(this));
                     });
+
+                    // Nueva función para realizar la suma y actualización
+                    function updateTotal(row) {
+                                var cantidad = parseFloat(row.find('input[name="cantidad"]').val()) || 0;
+                                var kcal = parseFloat(row.find('label[for="kcal"]').text()) || 0;
+                                var protein = parseFloat(row.find('label[for="protein"]').text()) || 0;
+                                var carbohydrates = parseFloat(row.find('label[for="carbohydrates"]').text()) || 0;
+
+                                var totalKcal = cantidad * kcal;
+                                var totalProtein = cantidad * protein;
+                                var totalCarbohydrates = cantidad * carbohydrates;
+
+                                // Actualiza los elementos correspondientes con los nuevos valores
+                                row.find('label[for="kcal"]').text(totalKcal.toFixed(2));
+                                row.find('label[for="protein"]').text(totalProtein.toFixed(2));
+                                row.find('label[for="carbohydrates"]').text(totalCarbohydrates.toFixed(2));
+                            }
+
+                            // Asocia la nueva función al evento 'input' del campo de cantidad
+                            $('#formFlogsContainer').on('change', 'input[name="cantidad"]', function () {
+                                var row = $(this).closest('tr');
+                                updateTotal(row);
+                            });
             
                     function addFormFlogs() {
                         var clonedFormFlogs = $('.clonable-form').first().clone();

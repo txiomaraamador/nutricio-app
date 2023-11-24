@@ -41,19 +41,19 @@
                     <td>
                         <div class="form-group">
                         
-                            {!! Form::label('kcal', '50') !!} kcal
+                            {!! Form::label('kcal', '00') !!} kcal
 
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
-                            {!! Form::label('protein', '50') !!} g
+                            {!! Form::label('protein', '0.0') !!} g
 
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
-                            {!! Form::label('carbohydrates', '50') !!} g
+                            {!! Form::label('carbohydrates', '0.0') !!} g
 
                         </div>
                     </td>
