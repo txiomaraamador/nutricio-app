@@ -4,7 +4,7 @@
                 <tr>
                     <td>Selecciona el tipo de alimento</td>
                     <td>Alimento</td>
-                    <td>Cantidad</td>
+                    <td>Cantidad (en g)</td>
                     <td>Kcal</td>
                     <td>Proteina</td>
                     <td>Carbohidratos</td>
@@ -27,7 +27,7 @@
                         <div class="form-group ">
                             <div class="input-group has-validation">
                                 {!! Form::text('cantidad', null, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
-                                <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese su código aquí. No debe contener más de 8 caracteres.">
+                                <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la cantidad de alimento a ingerir. Debe ser en gramos.">
                                     <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                                 </span>
                                 @error('cantidad')

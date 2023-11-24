@@ -113,9 +113,9 @@
                                 var protein = parseFloat(row.find('label[for="protein"]').text()) || 0;
                                 var carbohydrates = parseFloat(row.find('label[for="carbohydrates"]').text()) || 0;
 
-                                var totalKcal = cantidad * kcal;
-                                var totalProtein = cantidad * protein;
-                                var totalCarbohydrates = cantidad * carbohydrates;
+                                var totalKcal = (cantidad * kcal) / 100;
+                                var totalProtein = (cantidad * protein) / 100;
+                                var totalCarbohydrates = (cantidad * carbohydrates) / 100;
 
                                 // Actualiza los elementos correspondientes con los nuevos valores
                                 row.find('label[for="kcal"]').text(totalKcal.toFixed(2));
@@ -149,9 +149,6 @@
                     $('#addFormFlogs').click(addFormFlogs);
                 });
             </script>
-            
-            
-            
             
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="/foods" class="btn btn-success">Cancelar</a>
