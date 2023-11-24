@@ -3,7 +3,7 @@
             <thead>
                 <tr>
                     <td>Selecciona el tipo de alimento</td>
-                    <td>Alimento (por 100g)</td>
+                    <td>Alimento</td>
                     <td>Cantidad (en g)</td>
                     <td>Kcal</td>
                     <td>Proteina</td>
@@ -41,7 +41,7 @@
                     <td>
                         <div class="form-group">
                         
-                            {!! Form::label('kcal', '00') !!} kcal
+                            {!! Form::label('kcal', '0.0') !!} kcal
 
                         </div>
                     </td>
