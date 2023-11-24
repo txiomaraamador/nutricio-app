@@ -143,6 +143,14 @@
                         clonedFormFlogs.find('[id]').each(function () {
                             $(this).attr('id', $(this).attr('id') + uniqueId);
                         });
+
+                        // Restablecer los valores en el nuevo formulario
+    clonedFormFlogs.find('select[name="type"]').val('');
+    clonedFormFlogs.find('select[name="flogs[]"]').val('');
+    clonedFormFlogs.find('input[name="cantidad"]').val(null);
+    clonedFormFlogs.find('label[for="kcal"]').text('00');
+    clonedFormFlogs.find('label[for="protein"]').text('0.0');
+    clonedFormFlogs.find('label[for="carbohydrates"]').text('0.0');
             
                         clonedFormFlogs.find('.remove-form').click(function () {
                             $(this).closest('table').remove();

@@ -26,7 +26,7 @@
                     <td>
                         <div class="form-group ">
                             <div class="input-group has-validation">
-                                {!! Form::text('cantidad', 0, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
+                                {!! Form::text('cantidad', null, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
                                 <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la cantidad de alimento a ingerir. Debe ser en gramos.">
                                     <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                                 </span>
