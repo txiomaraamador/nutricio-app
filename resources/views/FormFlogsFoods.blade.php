@@ -3,7 +3,7 @@
             <thead>
                 <tr>
                     <td>Selecciona el tipo de alimento</td>
-                    <td>Alimento</td>
+                    <td>Alimento (por 100g)</td>
                     <td>Cantidad (en g)</td>
                     <td>Kcal</td>
                     <td>Proteina</td>
@@ -20,13 +20,13 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            {!! Form::select('flogs[]', $flogs->pluck('aliment', 'id'), null,['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Eligir un alimento']) !!}
+                            {!! Form::select('flogs[]', $flogs->pluck('aliment', 'id'), null,['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Seleccione una opcion']) !!}
                         </div>
                     </td>
                     <td>
                         <div class="form-group ">
                             <div class="input-group has-validation">
-                                {!! Form::text('cantidad', null, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
+                                {!! Form::text('cantidad', 0, ['class' => 'form-control'. ($errors->has('code') ? ' is-invalid' : ''), 'required' => 'required']) !!}
                                 <span class="input-group-text" id="inputGroupPrepend3" data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese la cantidad de alimento a ingerir. Debe ser en gramos.">
                                     <i class="bi bi-question-circle" style="opacity: 0.5;"></i>
                                 </span>

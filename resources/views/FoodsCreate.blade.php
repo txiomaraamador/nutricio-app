@@ -67,6 +67,9 @@
                                 var selectAliment = select.closest('tr').find('select[name="flogs[]"]');
                                 selectAliment.empty();
             
+                                // Agregar una opción predeterminada
+                                selectAliment.append('<option value="">Seleccione una opcion</option>');
+
                                 $.each(data, function (index, item) {
                                     selectAliment.append('<option value="' + item.id + '">' + item.aliment + '</option>');
                                 });
@@ -108,14 +111,19 @@
 
                     // Nueva función para realizar la suma y actualización
                     function updateTotal(row) {
+                        
                                 var cantidad = parseFloat(row.find('input[name="cantidad"]').val()) || 0;
                                 var kcal = parseFloat(row.find('label[for="kcal"]').text()) || 0;
                                 var protein = parseFloat(row.find('label[for="protein"]').text()) || 0;
                                 var carbohydrates = parseFloat(row.find('label[for="carbohydrates"]').text()) || 0;
+                                
+                                var totalKcal = 00;
+                                var totalProtein = 00;
+                                var totalCarbohydrates = 00;
 
-                                var totalKcal = (cantidad * kcal) / 100;
-                                var totalProtein = (cantidad * protein) / 100;
-                                var totalCarbohydrates = (cantidad * carbohydrates) / 100;
+                                 totalKcal = (cantidad * kcal) / 100;
+                                 totalProtein = (cantidad * protein) / 100;
+                                 totalCarbohydrates = (cantidad * carbohydrates) / 100;
 
                                 // Actualiza los elementos correspondientes con los nuevos valores
                                 row.find('label[for="kcal"]').text(totalKcal.toFixed(2));
