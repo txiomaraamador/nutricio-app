@@ -56,17 +56,17 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Tipo</th>
-            <th>Contenido</th>
-            <th>Paciente</th>
-            <th>Fecha</th>
-            <th>Hora</th>
+            <th>Tipo de alimento</th>
+            <th>Nombre</th>
+            <th>Calorias por 1g</th>
+            <th>Proteina por 1g</th>
+            <th>Carbohidratos por 1g</th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
         @foreach ($results as $flog)
             <tr>
-                <td>{{ $flog->type }}</td>
+                <td>{{ $flog->typename->name }}</td>
                 <td>{{ $flog->aliment }}</td>
                 <td>{{ $flog->kcal }} kcal</td>
                 <td>{{ $flog->protein }} g</td>
@@ -127,15 +127,15 @@
         <tr>
             <th>Tipo de alimento</th>
             <th>Nombre</th>
-            <th>Calorias por 100g</th>
-            <th>Proteina por 100g</th>
-            <th>Carbohidratos por 100g</th>
+            <th>Calorias por 1g</th>
+            <th>Proteina por 1g</th>
+            <th>Carbohidratos por 1g</th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
         @foreach ($flogs as $flog)
             <tr>
-                <td>{{ $flog->type }}</td>
+                <td>{{ $flog->typename->name }}</td>
                 <td>{{ $flog->aliment }}</td>
                 <td>{{ $flog->kcal }} kcal</td>
                 <td>{{ $flog->protein }} g</td>

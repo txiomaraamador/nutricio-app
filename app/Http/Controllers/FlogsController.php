@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Flogs;
 use App\Models\Patients;
+use App\Models\Categorys;
 use PDF;
 
 class FlogsController extends Controller
@@ -18,7 +19,7 @@ class FlogsController extends Controller
             // Buscar por id_user
             $resultsA = Flogs::search($query)->get();
 
-            $flogs = Flogs::all()->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
+            $flogs = Flogs::with('typename')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
             
             if ($results->isEmpty()) {
                 // Si no hay resultados, redirige de nuevo a la vista con un mensaje de error
@@ -36,7 +37,8 @@ class FlogsController extends Controller
 
     public function create()
     {
-        return view('flogscreate');
+        $categoty = Categorys::all();
+        return view('flogscreate', compact('categoty'));
     }
 
     public function store(Request $request)
@@ -51,7 +53,7 @@ class FlogsController extends Controller
             ],$messages);
 
             $flog = new Flogs();
-            $flog -> type = $request -> input('type');
+            $flog -> type_id = $request -> input('type');
             $flog -> aliment = $request -> input('aliment');
             $flog -> kcal = $request -> input('kcal');
             $flog -> protein = $request -> input('protein');
@@ -152,12 +154,12 @@ class FlogsController extends Controller
         {
           // Utiliza el método find para obtener el modelo correspondiente
         $flog = Flogs::find($id);
-        $flogId = $flog->type;
+        $flogId = $flog->type_id;
         //dd($flogId);
         // Verifica si se encontró el modelo antes de continuar
         if ($flog) {
             // Obtén los alimentos para el ID específico
-            $aliments = Flogs::select('id', 'aliment')->where('type', $flogId)->get();
+            $aliments = Flogs::select('id', 'aliment')->where('type_id', $flogId)->get();
             return response()->json($aliments);
         } else {
             // Maneja el caso en que no se encuentre el modelo con el ID proporcionado

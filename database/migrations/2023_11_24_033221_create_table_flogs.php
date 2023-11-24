@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('flogs', function (Blueprint $table) {
             $table->id();
-            $table->string('type', 100);
+            $table->unsignedBigInteger('type_id');
             $table->string('aliment');
 	        $table->string('kcal');
             $table->string('protein');
             $table->string('carbohydrates');
             
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('categorys')->onDelete('cascade');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flogs');
+        Schema::dropIfExists('table_flogs');
     }
 };

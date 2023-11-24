@@ -121,9 +121,9 @@
                                 var totalProtein = 00;
                                 var totalCarbohydrates = 00;
 
-                                 totalKcal = (cantidad * kcal) / 100;
-                                 totalProtein = (cantidad * protein) / 100;
-                                 totalCarbohydrates = (cantidad * carbohydrates) / 100;
+                                 totalKcal = cantidad * kcal;
+                                 totalProtein = cantidad * protein;
+                                 totalCarbohydrates = cantidad * carbohydrates;
 
                                 // Actualiza los elementos correspondientes con los nuevos valores
                                 row.find('label[for="kcal"]').text(totalKcal.toFixed(2));

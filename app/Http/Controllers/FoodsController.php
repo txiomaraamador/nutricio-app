@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Foods;
 use App\Models\Flogs;
 use App\Models\Patients;
+use App\Models\Categorys;
 use PDF;
 
 class FoodsController extends Controller
@@ -47,7 +48,8 @@ class FoodsController extends Controller
     {
         $patients = Patients::all();
         $flogs = Flogs::all();
-        return view('foodscreate', compact('patients','flogs'));
+        $categoty = Categorys::all();
+        return view('foodscreate', compact('patients','flogs','categoty'));
     }
 
     public function store(Request $request)
@@ -81,10 +83,11 @@ class FoodsController extends Controller
             $foodId = $food->id;
 
             // Adjuntar Flogs (sustituye [1, 2, 3] con los IDs de Flog que deseas adjuntar)
-            //$flogIds = [1, 2]; // Modifica este array con los IDs de Flog deseados
             $flogIds = $request->input('flogs', []); // Recupera los IDs de los Flogs desde el formulario
-            
-            $food->flogs()->attach($flogIds);
+            $cantidad = $request->input('cantidad'); // Obtener la cantidad desde el formulario
+
+        // Guardar la relación con la cantidad
+        $food->flogs()->attach($flogIds, ['cantidad' => $cantidad]);
 
             return redirect("/foods")->with('success', 'Comida agregada con éxito');
         } catch (\Illuminate\Database\QueryException $e) {

@@ -15,7 +15,7 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            {!! Form::select('type', $flogs->pluck('type', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elegir tipo de alimento',]) !!}
+                            {!! Form::select('type', $categoty->pluck('name', 'id'), null, ['class' => 'form-select', 'required' => 'required', 'placeholder' => 'Elegir tipo de alimento',]) !!}
                         </div>
                     </td>
                     <td>

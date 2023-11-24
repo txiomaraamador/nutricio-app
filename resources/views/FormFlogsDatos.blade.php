@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <div class="col-md-6">
     {!! Form::label('type', 'Tipo de Alimento:', ['class' => 'form-label']) !!}
-    {!! Form::select('type', ['Verdura y hortalizas' => 'Verdura y hortalizas', 'Fruta' => 'Fruta', 'Legumbres, arroz y pasta' => 'Legumbres, arroz y pasta', 'Leche o derivados' => 'Leche o derivados','Carne o embutidos' => 'Carne o embutidos','Pescado' => 'Pescado','Panaderia o dulces' => 'Panadera o dulces'], null, ['class' => 'form-select'. ($errors->has('type') ? ' is-invalid' : ''), 'id' => 'type', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
+    {!! Form::select('type', $categoty->pluck('name', 'id'), null, ['class' => 'form-select'. ($errors->has('type') ? ' is-invalid' : ''), 'id' => 'type', 'required' => 'required', 'placeholder' => 'Elige uno']) !!}
     @error('type')
     <div class="invalid-feedback" style="color: red;">
         {{ $message }}
