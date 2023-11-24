@@ -21,6 +21,6 @@ class Foods extends Model
     }
     //relacion muchos a muchos
     public function flogs(){
-        return $this->belongsToMany('App\Models\Flogs');
+        return $this->belongsToMany('App\Models\Flogs')->withPivot('cantidad');
     }
 }

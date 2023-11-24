@@ -54,7 +54,7 @@ class FoodsController extends Controller
 
     public function store(Request $request)
     {
-        try {
+      //  try {
             $messages = [
                 'type.required' => 'El tipo de comida es obligatorio.',
               //  'type.in' => 'El tipo de comida debe ser "Comida", "Cena", "Desayuno" o "Colacion".',
@@ -84,16 +84,17 @@ class FoodsController extends Controller
 
             // Adjuntar Flogs (sustituye [1, 2, 3] con los IDs de Flog que deseas adjuntar)
             $flogIds = $request->input('flogs', []); // Recupera los IDs de los Flogs desde el formulario
-            $cantidad = $request->input('cantidad'); // Obtener la cantidad desde el formulario
-
-        // Guardar la relación con la cantidad
-        $food->flogs()->attach($flogIds, ['cantidad' => $cantidad]);
-
+            $cantidad = $request->input('cantidad',[]); // Obtener la cantidad desde el formulario
+            // Guardar la relación con la cantidad (para cada formulario)
+            foreach ($flogIds as $index => $flogId) {
+                $cantidadActual = isset($cantidad[$index]) ? $cantidad[$index] : 1; // Valor por defecto si no se proporciona la cantidad
+                $food->flogs()->attach([$flogId => ['cantidad' => $cantidadActual]]);
+            }
             return redirect("/foods")->with('success', 'Comida agregada con éxito');
-        } catch (\Illuminate\Database\QueryException $e) {
+       // } catch (\Illuminate\Database\QueryException $e) {
             // Manejar el error de llave foránea
-            return redirect("/foods/create")->with('error', 'No se puede agregar la comida. ');
-        }
+        //    return redirect("/foods/create")->with('error', 'No se puede agregar la comida. ');
+       // }
     }
 
     public function show($id)
