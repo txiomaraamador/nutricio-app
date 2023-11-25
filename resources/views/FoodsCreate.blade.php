@@ -112,7 +112,7 @@
                     // Nueva función para realizar la suma y actualización
                     function updateTotal(row) {
                         
-                                var cantidad = parseFloat(row.find('input[name="cantidad"]').val()) || 0;
+                                var cantidad = parseFloat(row.find('input[name="cantidad[]"]').val()) || 0;
                                 var kcal = parseFloat(row.find('label[for="kcal"]').text()) || 0;
                                 var protein = parseFloat(row.find('label[for="protein"]').text()) || 0;
                                 var carbohydrates = parseFloat(row.find('label[for="carbohydrates"]').text()) || 0;
@@ -132,7 +132,7 @@
                             }
 
                             // Asocia la nueva función al evento 'input' del campo de cantidad
-                            $('#formFlogsContainer').on('change', 'input[name="cantidad"]', function () {
+                            $('#formFlogsContainer').on('change', 'input[name="cantidad[]"]', function () {
                                 var row = $(this).closest('tr');
                                 updateTotal(row);
                             });
@@ -147,7 +147,7 @@
                         // Restablecer los valores en el nuevo formulario
                         clonedFormFlogs.find('select[name="type"]').val('');
                         clonedFormFlogs.find('select[name="flogs[]"]').val('');
-                        clonedFormFlogs.find('input[name="cantidad"]').val(null);
+                        clonedFormFlogs.find('input[name="cantidad[]"]').val(null);
                         clonedFormFlogs.find('label[for="kcal"]').text('0.0');
                         clonedFormFlogs.find('label[for="protein"]').text('0.0');
                         clonedFormFlogs.find('label[for="carbohydrates"]').text('0.0');
