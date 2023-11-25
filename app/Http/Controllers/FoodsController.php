@@ -180,7 +180,7 @@ class FoodsController extends Controller
             return redirect()->route('patients.index')->with('error', 'Paciente no encontrado.');
         }
     
-        $foods = Foods::where('patient_id', $id)->get();
+        $foods = Foods::where('patient_id', $id)->get()->groupBy('date');
     
         return view('foodspatients', compact('foods', 'patient'));
     }

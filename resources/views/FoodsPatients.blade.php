@@ -15,7 +15,7 @@
                 </div>
             </div>
         </nav>
-
+        <hr style="color: #000000;" />
         @if(session('error'))
             <div id="alert" class="alert alert-danger">
                 {{ session('error') }}
@@ -37,13 +37,14 @@
                 }
             }, 3000); // La alerta se ocultará después de 5 segundos (5000 milisegundos)
         </script>
-
+@foreach ($foods as $date => $groupedFoods)
+<h4>Comidas para la fecha: {{ $date }}</h4>
         <!-- Mostrar la lista de comidas del paciente -->
         <table class="table table-hover">
             <!-- Encabezados de la tabla -->
             <thead>
                 <tr>
-                    <th>Tipo</th>
+                   
                     <th>Contenido</th>
                     <th>Fecha</th>
                     <th>Hora</th>
@@ -51,7 +52,7 @@
             </thead>
             <!-- Cuerpo de la tabla -->
             <tbody class="table-group-divider">
-                @foreach ($foods as $food)
+                @foreach ($groupedFoods as $food)
                     <tr>
                         <td>{{ $food->type }}</td>
                         <td>{{ $food->date }}</td>
@@ -78,5 +79,7 @@
                 @endforeach
             </tbody>
         </table>
+        <hr style="color: #000000;" />
+        @endforeach
     </div>
 @endsection
