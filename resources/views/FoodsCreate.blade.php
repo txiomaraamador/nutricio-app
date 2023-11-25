@@ -129,6 +129,27 @@
                                 row.find('label[for="kcal"]').text(totalKcal.toFixed(2));
                                 row.find('label[for="protein"]').text(totalProtein.toFixed(2));
                                 row.find('label[for="carbohydrates"]').text(totalCarbohydrates.toFixed(2));
+
+                                updateGlobalTotal();
+                            
+                            }
+
+                            function updateGlobalTotal() {
+                                var totalKcal = 0;
+                                var totalProtein = 0;
+                                var totalCarbohydrates = 0;
+
+                                // Itera sobre todos los formularios y suma los valores
+                                $('#formFlogsContainer .clonable-form').each(function () {
+                                    totalKcal += parseFloat($(this).find('label[for="kcal"]').text()) || 0;
+                                    totalProtein += parseFloat($(this).find('label[for="protein"]').text()) || 0;
+                                    totalCarbohydrates += parseFloat($(this).find('label[for="carbohydrates"]').text()) || 0;
+                                });
+
+                                // Actualiza los elementos del total global
+                                $('#totalKcal').text(totalKcal.toFixed(2));
+                                $('#totalProtein').text(totalProtein.toFixed(2));
+                                $('#totalCarbohydrates').text(totalCarbohydrates.toFixed(2));
                             }
 
                             // Asocia la nueva función al evento 'input' del campo de cantidad
@@ -158,14 +179,25 @@
             
                         $('#formFlogsContainer').append(clonedFormFlogs);
                         clonedFormFlogs.find('select[name="type"]').trigger('change');
+
+                        updateGlobalTotal();
                     }
+
+                    updateGlobalTotal();
             
                     addFormFlogs();
             
                     $('#addFormFlogs').click(addFormFlogs);
                 });
             </script>
-            
+
+            <div id="totalContainer" class="mt-4">
+                <h4>Total de valores nutrimentales por comida:</h4>
+                <label for="totalKcal">Kcal: <span id="totalKcal">0.0</span></label>, 
+                <label for="totalProtein">Proteína: <span id="totalProtein">0.0</span></label>, 
+                <label for="totalCarbohydrates">Carbohidratos: <span id="totalCarbohydrates">0.0</span></label>
+            </div>
+                        
             <button type="submit" class="btn btn-success">Guardar</button>
             <a href="/foods" class="btn btn-success">Cancelar</a>
         </form>
