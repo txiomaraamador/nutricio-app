@@ -150,7 +150,10 @@
                                 <!-- Botón de eliminación -->
                                 {!! Form::open(['route' => ['foods.destroy', $food->id], 'method' => 'DELETE']) !!}
                                 {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger', 'onclick' => 'return confirmDelete('.$food->id.')']) !!}
+                                {!! Form::close() !!}
 
+                                {!! Form::open(['route' => ['foods.show', $food->id], 'method' => 'GET']) !!}
+                                    {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                                 {!! Form::close() !!}
                                <!-- Código de instalación Cliengo para xiomaralizethamadoraguilera@gmail.com --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65440c5a14ee5c0032c5059c/65440c5d14ee5c0032c5059f.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
                             </div>

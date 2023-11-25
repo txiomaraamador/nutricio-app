@@ -7,6 +7,7 @@ use App\Models\Foods;
 use App\Models\Flogs;
 use App\Models\Patients;
 use App\Models\Categorys;
+use App\Models\Flogs_Foods;
 use PDF;
 
 class FoodsController extends Controller
@@ -99,13 +100,19 @@ class FoodsController extends Controller
 
     public function show($id)
     {
-        /*$flog = Flogs::find($id);
+        $food = Foods::find($id);
 
-        if ($flog) {
-            return view('FlogsShow', compact('flog'));
-        } else {
-            return redirect()->route('flogs.index')->with('error', 'Comida no encontrado.');
-        }*/
+        // Obtén los registros de flogs_foods para el alimento específico
+        $flogs_foods = Flogs_foods::where('foods_id', $food->id)->get();
+    //dd($flogs_foods);
+        // Obtén los IDs de flogs asociados al alimento
+        $flogs_ids = $flogs_foods->pluck('flogs_id')->toArray();
+    
+        // Obtén los registros de flogs con la relación 'typename' y 'pivot' (cantidad)
+        //$flogs = Flogs::with('typename')->whereIn('id', $flogs_ids)->get();
+        $flogs = Flogs::with('typename')->whereIn('id', $flogs_ids)->orderBy('id', 'desc')->get();
+    
+        return view('FoodsShow', compact('food','flogs_foods','flogs'));
     }
 
     public function edit($id)
