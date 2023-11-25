@@ -68,6 +68,10 @@
                                 {!! Form::open(['route' => ['foods.destroy', $food->id], 'method' => 'DELETE']) !!}
                                     {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
+
+                                {!! Form::open(['route' => ['foods.show', $food->id], 'method' => 'GET']) !!}
+                                {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
+                            {!! Form::close() !!}
                             </div>
                         </td>
                     </tr>
