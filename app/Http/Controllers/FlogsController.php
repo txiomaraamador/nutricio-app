@@ -153,8 +153,8 @@ class FlogsController extends Controller
         public function getAliments($id)
         {
           // Utiliza el método find para obtener el modelo correspondiente
-        $flog = Flogs::find($id);
-        $flogId = $flog->type_id;
+        $flog = Categorys::find($id);
+        $flogId = $flog->id;
         //dd($flogId);
         // Verifica si se encontró el modelo antes de continuar
         if ($flog) {
