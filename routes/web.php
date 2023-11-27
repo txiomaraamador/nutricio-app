@@ -67,4 +67,4 @@ Route::get('/getAliments/{id}', [FlogsController::class, 'getAliments']);
 Route::get('/getValores/{id}', [FlogsController::class, 'getValores']);
 
 
-Route::get('/foods/showToday/{id}',[FoodsController::class, 'showToday']);
+Route::get('/foods/showToday/{id}',[FoodsController::class, 'showToday'])->name('foods.showFoodsToday');;

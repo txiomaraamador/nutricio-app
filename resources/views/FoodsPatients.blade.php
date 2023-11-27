@@ -39,6 +39,7 @@
         </script>
 @foreach ($foods as $date => $groupedFoods)
 <h4>Comidas para la fecha: {{ $date }}</h4>
+
         <!-- Mostrar la lista de comidas del paciente -->
         <table class="table table-hover">
             <!-- Encabezados de la tabla -->
@@ -52,7 +53,9 @@
             </thead>
             <!-- Cuerpo de la tabla -->
             <tbody class="table-group-divider">
+
                 @foreach ($groupedFoods as $food)
+                
                     <tr>
                         <td>{{ $food->type }}</td>
                         <td>{{ $food->date }}</td>
@@ -69,6 +72,10 @@
                                 {!! Form::open(['route' => ['foods.destroy', $food->id], 'method' => 'DELETE']) !!}
                                     {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
+                                {!! Form::open(['route' => ['foods.showFoodsToday', $food->id], 'method' => 'GET']) !!}
+                                    {!! Form::button('Mostrar detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
+                                {!! Form::close() !!}
+
 
                             </div>
                         </td>

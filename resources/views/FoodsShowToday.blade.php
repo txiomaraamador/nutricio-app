@@ -7,7 +7,7 @@
         <nav class="navbar bg-body-tertiary">
             <h1 class="display-6">Detalles de Comida por dia para {{ $patient->name }}</h1>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="{{ url('/ruta_a_la_vista_anterior') }}" class="btn btn-outline-success mt-3">Regresar</a>
+                <a href="{{ url('/patients/'.$patient->id.'/foods') }}" class="btn btn-outline-success mt-3">Regresar</a>
             </div>
         </nav>
         <hr style="color: #000000;" />
