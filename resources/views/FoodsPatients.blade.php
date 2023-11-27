@@ -72,17 +72,19 @@
                                 {!! Form::open(['route' => ['foods.destroy', $food->id], 'method' => 'DELETE']) !!}
                                     {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
-                                {!! Form::open(['route' => ['foods.showFoodsToday', $food->id], 'method' => 'GET']) !!}
-                                    {!! Form::button('Mostrar detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
-                                {!! Form::close() !!}
-
-
+                                
                             </div>
                         </td>
                     </tr>
+                    
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-end">
+                    {!! Form::open(['route' => ['foods.showFoodsToday', $food->id], 'method' => 'GET']) !!}
+                        {!! Form::button('Mostrar detalles de comidas diario', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
+                    {!! Form::close() !!}
+        </div>
         @endforeach
     </div>
 @endsection
