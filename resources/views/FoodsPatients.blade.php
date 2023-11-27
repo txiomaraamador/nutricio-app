@@ -70,16 +70,12 @@
                                     {!! Form::button('Eliminar', ['type' => 'submit', 'class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
 
-                                {!! Form::open(['route' => ['foods.show', $food->id], 'method' => 'GET']) !!}
-                                {!! Form::button('Ver Detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
-                            {!! Form::close() !!}
                             </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <hr style="color: #000000;" />
         @endforeach
     </div>
 @endsection

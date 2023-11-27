@@ -104,7 +104,7 @@ class FoodsController extends Controller
 
         // Obtén los registros de flogs_foods para el alimento específico
         $flogs_foods = Flogs_foods::where('foods_id', $food->id)->get();
-    //dd($flogs_foods);
+        //dd($flogs_foods);
         // Obtén los IDs de flogs asociados al alimento
         $flogs_ids = $flogs_foods->pluck('flogs_id')->toArray();
     
@@ -113,6 +113,36 @@ class FoodsController extends Controller
         $flogs = Flogs::with('typename')->whereIn('id', $flogs_ids)->orderBy('id', 'desc')->get();
     
         return view('FoodsShow', compact('food','flogs_foods','flogs'));
+    }
+
+    public function showToday($id)
+    {
+        $food = Foods::find($id);
+        // Obtén todos los alimentos del mismo paciente y fecha
+        $foods = Foods::where('patient_id', $food->patient_id)
+                    ->where('date', $food->date)
+                    ->get();
+
+        // Obtén los IDs de los alimentos
+        $food_ids = $foods->pluck('id')->toArray();
+
+        // Obtén los registros de flogs_foods para los alimentos específicos
+        $flogs_foods = Flogs_foods::whereIn('foods_id', $food_ids)->get();
+
+        // Obtén los IDs de los flogs asociados a los alimentos
+        $flogs_ids = $flogs_foods->pluck('flogs_id')->toArray();
+
+        $flogs = Flogs::with(['typename', 'foods' => function ($query) use ($food_ids) {
+            $query->whereIn('foods.id', $food_ids); // Agrega la calificación de la columna id
+        }])
+        ->whereIn('flogs.id', $flogs_ids) // Agrega la calificación de la columna id
+        ->orderBy('flogs.id', 'desc') // Agrega la calificación de la columna id
+        ->get();
+
+        // Obtén los datos del paciente
+        $patient = Patients::find($food->patient_id);
+
+        return view('FoodsShowToday', compact('foods', 'flogs_foods', 'flogs', 'patient'));
     }
 
     public function edit($id)

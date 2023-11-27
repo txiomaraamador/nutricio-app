@@ -10,13 +10,10 @@
                 <a href="/foods" class="btn btn-outline-success mt-3">Regresar</a>
             </div>
         </nav>
+        <p>Fecha: {{ $food->date }}</p>
         <hr style="color: #000000;" />
-
-                <p>Tipo de Alimento: {{ $food->type }}</p>
-                <p>Fecha: {{ $food->date }}</p>
-                <p>Hora: {{ $food->hour }}
-                    <hr style="color: #000000;" />
                 <h3>Información de Alimentos</h3>
+                <p>{{ $food->type }}, Hora: {{ $food->hour }}</p>
                 <table class="table table-hover">
                     <thead>
                         <tr>
