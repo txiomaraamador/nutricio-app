@@ -104,7 +104,7 @@
             {!! Form::close() !!}
             <a href="{{route('listadofoods.pdf')}}" class="btn btn-outline-success">PDF <i class="bi bi-download"></i></a>
 
-            <form action="{{ route('searchfood') }}" method="GET" class="d-flex" role="search">
+            <form action="{{ route('searchflog') }}" method="GET" class="d-flex" role="search">
                 <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
                 <button class="btn btn-outline-warning" type="submit">Buscar</button>
             </form>

@@ -31,7 +31,7 @@ Route::get('/patients/edit/{id}',[PatientsController::class, 'edit']);
 Route::put('/patients/{id}',[PatientsController::class, 'update']);
 Route::delete('/patients/delete/{id}',[PatientsController::class, 'destroy']);
 //ruta de busqueda
-Route::get('/search', [PatientsController::class, 'index'])->name('search');
+Route::get('/searchp', [PatientsController::class, 'index'])->name('searchp');
 //ruta de pdf
 Route::get('patientspdf',[PatientsController::class, 'Pdfs'])->name('listadopatients.pdf');
 
@@ -58,7 +58,7 @@ Route::get('/flogs/edit/{id}',[FlogsController::class, 'edit']);
 Route::put('/flogs/{id}',[FlogsController::class, 'update']);
 Route::delete('/flogs/delete/{id}',[FlogsController::class, 'destroy']);
 //ruta de busqueda
-Route::get('/searchflog', [FlogsController::class, 'index'])->name('search');
+Route::get('/searchflog', [FlogsController::class, 'index'])->name('searchflog');
 //ruta de pdf
 Route::get('flogspdf',[FlogsController::class, 'Pdfs'])->name('listadoflogs.pdf');
 

@@ -21,7 +21,7 @@ class FlogsController extends Controller
 
             $flogs = Flogs::with('typename')->get(); // Obtener todos los pacientes para mostrar junto con los resultados de búsqueda
             
-            if ($results->isEmpty()) {
+            if ($resultsA->isEmpty()) {
                 // Si no hay resultados, redirige de nuevo a la vista con un mensaje de error
                 return redirect()->route('flogs.index')->with('error', 'No se encontraron resultados para la búsqueda: ' . $query);
             } else {

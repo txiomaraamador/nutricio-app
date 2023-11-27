@@ -101,7 +101,7 @@
                     </ul>
                     <hr style="color: #000000;" />
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Buscar un paciente</h5><br>
-                    <form action="{{ route('search') }}" method="GET" class="d-flex" role="search">
+                    <form action="{{ route('searchp') }}" method="GET" class="d-flex" role="search">
                         <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
                         <button class="btn btn-outline-warning" type="submit">Buscar</button>
                     </form>
