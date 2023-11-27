@@ -1,29 +1,23 @@
-@extends('layouts.app')
-
-@section('title', 'Foods Show')
-
+@extends('layouts.pdfinicio')
 @section('content')
+
     <div class="container">
         <nav class="navbar bg-body-tertiary">
-            <h1 class="display-6">Detalles de Comida por dia para {{ $patient->name }}</h1>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="{{ url('/patients/'.$patient->id.'/foods') }}" class="btn btn-outline-success mt-3">Regresar</a>
-                
-
-            </div>
+            <h1 class="display-6">Detalles de Comida para {{ $patient->name }}</h1>
         </nav>
-        <hr style="color: #000000;" />
-        <p>Nombre: {{ $patient->name }} {{ $patient->lastname }}</p>
+        
+        <h2>Patient Information</h2>
+        <p>Name: {{ $patient->name }}</p>
+        <p>Last Name: {{ $patient->lastname }}</p>
         <p>Code: {{ $patient->code }}</p>
-        <hr style="color: #000000;" />
+        <p>Sex: {{ $patient->sex }}</p>
+        <p>Weight: {{ $patient->weight }}</p>
+        <p>Height: {{ $patient->height }}</p>
+        <p>Age: {{ $patient->age }}</p>
+
         <h2>Comidas</h2>
-        <?php
-            $grandTotalKcal = 0;
-            $grandTotalProtein = 0;
-            $grandTotalCarbohydrates = 0;
-        ?>
         @foreach ($foods as $food)
-            <p>{{ $food->type }}, hora: {{ $food->hour }}, {{ $food->date }}</p>
+            <p>{{ $food->type }}, hora: {{ $food->hour }}</p>
             
             <table class="table table-hover">
                 <thead>
@@ -71,24 +65,8 @@
                         <td>{{ $totalProtein }} g</td>
                         <td>{{ $totalCarbohydrates }} g</td>
                     </tr>
-                    <?php
-                        $grandTotalKcal += $totalKcal;
-                        $grandTotalProtein += $totalProtein;
-                        $grandTotalCarbohydrates += $totalCarbohydrates;
-                    ?>
                 </tbody> 
             </table>
         @endforeach
-        <div>
-            <h3>Total completo por dia</h3>
-            <p>Kcal: {{ $grandTotalKcal }} kcal, Proteina: {{ $grandTotalProtein }} g, Carbohidratos: {{ $grandTotalCarbohydrates }} g</p>
-        </div>
-        <script>
-            @if(session('success'))
-                alert("{{ session('success') }}");
-            @elseif(session('error'))
-                alert("{{ session('error') }}");
-            @endif
-        </script>
     </div>
 @endsection

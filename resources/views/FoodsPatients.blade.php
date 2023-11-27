@@ -84,6 +84,7 @@
                     {!! Form::open(['route' => ['foods.showFoodsToday', $food->id], 'method' => 'GET']) !!}
                         {!! Form::button('Mostrar detalles de comidas diario', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                     {!! Form::close() !!}
+                    <a href="{{ url('/foods/'.$food->id.'/foodspdftoday') }}" class="btn btn-outline-success">Descargar en PDF</a>
         </div>
         @endforeach
     </div>

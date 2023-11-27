@@ -233,5 +233,38 @@ class FoodsController extends Controller
         
             return $pdf->download('listado_todas_las_comidas.pdf');
         }
+        
+    public function PdfShowToday($id)
+    {
+        $food = Foods::find($id);
+        $foodIdpdf= $food->id;
+        // Obtén todos los alimentos del mismo paciente y fecha
+        $foods = Foods::where('patient_id', $food->patient_id)
+                    ->where('date', $food->date)
+                    ->get();
+
+        // Obtén los IDs de los alimentos
+        $food_ids = $foods->pluck('id')->toArray();
+
+        // Obtén los registros de flogs_foods para los alimentos específicos
+        $flogs_foods = Flogs_foods::whereIn('foods_id', $food_ids)->get();
+
+        // Obtén los IDs de los flogs asociados a los alimentos
+        $flogs_ids = $flogs_foods->pluck('flogs_id')->toArray();
+
+        $flogs = Flogs::with(['typename', 'foods' => function ($query) use ($food_ids) {
+            $query->whereIn('foods.id', $food_ids); // Agrega la calificación de la columna id
+        }])
+        ->whereIn('flogs.id', $flogs_ids) // Agrega la calificación de la columna id
+        ->orderBy('flogs.id', 'desc') // Agrega la calificación de la columna id
+        ->get();
+
+        // Obtén los datos del paciente
+        $patient = Patients::find($food->patient_id);
+    
+        $pdf = PDF::loadView('pdf.listadofoodstoday', compact('foodIdpdf','foods', 'flogs_foods', 'flogs', 'patient'));
+    
+        return $pdf->download('listado_todas_las_comidas_diario.pdf');
+    }
 
 }
