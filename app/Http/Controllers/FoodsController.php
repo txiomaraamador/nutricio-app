@@ -218,7 +218,7 @@ class FoodsController extends Controller
     public function generatePdf($id)
         {
             $patient = Patients::find($id);
-            $foods = Foods::where('patient_id', $id)->get();
+            $foods = Foods::where('patient_id', $id)->get()->groupBy('date');;
         
             $pdf = PDF::loadView('pdf.listadofoodspatients', compact('foods', 'patient'));
         
