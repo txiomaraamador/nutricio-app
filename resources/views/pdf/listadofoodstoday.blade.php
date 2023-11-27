@@ -3,21 +3,25 @@
 
     <div class="container">
         <nav class="navbar bg-body-tertiary">
-            <h1 class="display-6">Detalles de Comida para {{ $patient->name }}</h1>
+            <h2 class="display-6">Reporte diario de valores nutrimentales</h2>
         </nav>
-        
-        <h2>Patient Information</h2>
-        <p>Name: {{ $patient->name }}</p>
-        <p>Last Name: {{ $patient->lastname }}</p>
-        <p>Code: {{ $patient->code }}</p>
-        <p>Sex: {{ $patient->sex }}</p>
-        <p>Weight: {{ $patient->weight }}</p>
-        <p>Height: {{ $patient->height }}</p>
-        <p>Age: {{ $patient->age }}</p>
+        <hr style="color: #000000;" />
 
-        <h2>Comidas</h2>
+        <h3>Información de paciente</h3>
+        <p>Nombre: {{ $patient->name }} {{ $patient->lastname }}</p>
+        <p>Code: {{ $patient->code }}</p>
+        <p>Sexo: {{ $patient->sex }}, Edad: {{ $patient->age }} años</p>
+        <p>Peso: {{ $patient->weight }} kg, Altura: {{ $patient->height }} mts</p>
+        <hr style="color: #000000;" />
+
+        <h3>Comidas a ingerir en un día</h3>
+        <?php
+            $grandTotalKcal = 0;
+            $grandTotalProtein = 0;
+            $grandTotalCarbohydrates = 0;
+        ?>
         @foreach ($foods as $food)
-            <p>{{ $food->type }}, hora: {{ $food->hour }}</p>
+            <p>{{ $food->type }}, hora: {{ $food->hour }}, {{ $food->date }}</p>
             
             <table class="table table-hover">
                 <thead>
@@ -60,13 +64,25 @@
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Total por comida completa</td>
+                        <td>Total</td>
                         <td>{{ $totalKcal }} kcal</td>
                         <td>{{ $totalProtein }} g</td>
                         <td>{{ $totalCarbohydrates }} g</td>
                     </tr>
+                    <?php
+                        $grandTotalKcal += $totalKcal;
+                        $grandTotalProtein += $totalProtein;
+                        $grandTotalCarbohydrates += $totalCarbohydrates;
+                    ?>
                 </tbody> 
             </table>
+
         @endforeach
+        <hr style="color: #000000;" />
+
+        <div>
+            <h4>Total de valor nutrimental por día: </h4>
+            <p>Kcal: {{ $grandTotalKcal }} kcal, Proteina: {{ $grandTotalProtein }} g, Carbohidratos: {{ $grandTotalCarbohydrates }} g</p>
+        </div>
     </div>
 @endsection

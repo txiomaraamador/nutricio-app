@@ -237,7 +237,6 @@ class FoodsController extends Controller
     public function PdfShowToday($id)
     {
         $food = Foods::find($id);
-        $foodIdpdf= $food->id;
         // Obtén todos los alimentos del mismo paciente y fecha
         $foods = Foods::where('patient_id', $food->patient_id)
                     ->where('date', $food->date)
@@ -262,7 +261,7 @@ class FoodsController extends Controller
         // Obtén los datos del paciente
         $patient = Patients::find($food->patient_id);
     
-        $pdf = PDF::loadView('pdf.listadofoodstoday', compact('foodIdpdf','foods', 'flogs_foods', 'flogs', 'patient'));
+        $pdf = PDF::loadView('pdf.listadofoodstoday', compact('foods', 'flogs_foods', 'flogs', 'patient'));
     
         return $pdf->download('listado_todas_las_comidas_diario.pdf');
     }

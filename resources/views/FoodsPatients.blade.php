@@ -4,6 +4,7 @@
 
 @section('content')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <div class="container">
         <nav class="navbar bg-body-tertiary">
@@ -82,10 +83,11 @@
         </table>
         <div class="d-flex justify-content-end">
                     {!! Form::open(['route' => ['foods.showFoodsToday', $food->id], 'method' => 'GET']) !!}
-                        {!! Form::button('Mostrar detalles de comidas diario', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
+                        {!! Form::button('Mostrar detalles', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                     {!! Form::close() !!}
-                    <a href="{{ url('/foods/'.$food->id.'/foodspdftoday') }}" class="btn btn-outline-success">Descargar en PDF</a>
+                    <a href="{{ url('/foods/'.$food->id.'/foodspdftoday') }}" class="btn btn-outline-success">PDF <i class="bi bi-download"></i></a>
         </div>
         @endforeach
     </div>
+    <hr style="color: #000000;" />
 @endsection
