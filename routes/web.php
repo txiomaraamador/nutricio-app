@@ -38,6 +38,7 @@ Route::get('patientspdf',[PatientsController::class, 'Pdfs'])->name('listadopati
 
 Route::resource('/foods',FoodsController::class);
 Route::post('/foods/create',[FoodsController::class, 'create']);
+
 Route::get('/foods/show/{id}',[FoodsController::class, 'show']);
 Route::get('/foods/edit/{id}',[FoodsController::class, 'edit']);
 Route::put('/foods/{id}',[FoodsController::class, 'update']);
