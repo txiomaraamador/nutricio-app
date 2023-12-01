@@ -212,7 +212,7 @@ class FoodsController extends Controller
     
         $foods = Foods::where('patient_id', $id)->get()->groupBy('date');
     
-        return view('foodspatients', compact('foods', 'patient'));
+        return view('FoodsPatients', compact('foods', 'patient'));
     }
 
     public function generatePdf($id)
