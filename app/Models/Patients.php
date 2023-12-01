@@ -19,4 +19,16 @@ class Patients extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    protected $fillable = [
+        'avatar',
+    ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        // Establecer un valor predeterminado para el campo 'image'
+        $this->attributes['avatar'] = 'default.jpeg'; // O el valor predeterminado que prefieras
+    }
 }
