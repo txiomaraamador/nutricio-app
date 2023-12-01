@@ -7,7 +7,7 @@ use App\Models\Foods;
 use App\Models\Flogs;
 use App\Models\Patients;
 use App\Models\Categorys;
-use App\Models\Flogs_Foods;
+use App\Models\Flogs_foods;
 use PDF;
 
 class FoodsController extends Controller
