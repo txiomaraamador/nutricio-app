@@ -47,7 +47,7 @@ class PatientsController extends Controller
     {
         $users = User::all(); // Obtener todos los usuarios
 
-        return view('patientscreate', compact('users'));
+        return view('PatientsCreate', compact('users'));
     }
 
     public function store(Request $request)
