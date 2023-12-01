@@ -36,12 +36,12 @@ class FoodsController extends Controller
                 return redirect()->route('foods.index')->with('error', 'No se encontraron resultados para la búsqueda: ' . $query);
             } else {
                 // Si hay resultados, muestra la vista con los resultados de búsqueda
-                return view('foodsindex', compact('foods', 'results'));
+                return view('FoodsIndex', compact('foods', 'results'));
             }
             
         } else {
             $foods = Foods::with('namepatients')->get();
-            return view('foodsindex', compact('foods'));    
+            return view('FoodsIndex', compact('foods'));    
         }
     }
 
@@ -50,7 +50,7 @@ class FoodsController extends Controller
         $patients = Patients::all();
         $flogs = Flogs::all();
         $categoty = Categorys::all();
-        return view('foodscreate', compact('patients','flogs','categoty'));
+        return view('FoodsCreate', compact('patients','flogs','categoty'));
     }
 
     public function store(Request $request)
@@ -151,7 +151,7 @@ class FoodsController extends Controller
         $foods = Foods::find($id);
     
         // Luego, puedes retornar la vista de edición junto con el cliente encontrado
-        return view('foodsEdit', compact('foods'));
+        return view('FoodsEdit', compact('foods'));
     }
 
     public function update(Request $request, $id)

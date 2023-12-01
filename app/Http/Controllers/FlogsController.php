@@ -26,19 +26,19 @@ class FlogsController extends Controller
                 return redirect()->route('flogs.index')->with('error', 'No se encontraron resultados para la búsqueda: ' . $query);
             } else {
                 // Si hay resultados, muestra la vista con los resultados de búsqueda
-                return view('flogsindex', compact('flogs', 'results'));
+                return view('FlogsIndex', compact('flogs', 'results'));
             }
             
         } else {
             $flogs = Flogs::all();
-            return view('flogsindex', compact('flogs'));    
+            return view('FlogsIndex', compact('flogs'));    
         }
     }
 
     public function create()
     {
         $categoty = Categorys::all();
-        return view('flogscreate', compact('categoty'));
+        return view('FlogsCreate', compact('categoty'));
     }
 
     public function store(Request $request)

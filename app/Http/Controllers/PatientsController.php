@@ -35,11 +35,11 @@ class PatientsController extends Controller
                 return redirect()->route('patients.index')->with('error', 'No se encontraron resultados para la búsqueda: ' . $query);
             } else {
                 // Si hay resultados, muestra la vista con los resultados de búsqueda
-                return view('patientsindex', compact('patients', 'results'));
+                return view('PatientsIndex', compact('patients', 'results'));
             }
         } else {
             $patients = Patients::with('nameuser')->get();
-            return view('patientsindex', compact('patients'));
+            return view('PatientsIndex', compact('patients'));
         }
     }
 
