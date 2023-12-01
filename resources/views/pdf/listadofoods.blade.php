@@ -21,14 +21,14 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach ($patients as $patient)
+                @foreach ($foods as $food)
                     <tr>
                         
-                        <td>{{ $patient->code }}</td>
-                        <td>{{ $patient->name }}</td>
-                        <td>{{ $patient->lastname }}</td>
-                        <td>{{ $patient->nameuser->name }}</td>
-                        <td> <img src="{{ public_path('avatars/' . $patient->avatar) }}" width="50"></td>
+                        <td>{{ $food->type }}</td>
+                        <td>{{ $food->content }}</td>
+                        <td>{{ $food->namepatients->name }}</td>
+                        <td>{{ $food->date }}</td>
+                        <td>{{ $food->hour }}</td>
                     </tr>
                 @endforeach
             </tbody>
